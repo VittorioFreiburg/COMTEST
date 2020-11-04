@@ -1,0 +1,897 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Code Generation Report</title>
+<link rel="stylesheet" type="text/css" href="resources/eml_report.css" />
+<link rel="stylesheet" type="text/css" href="resources/jQuery/ui.resizable.css" />
+<link rel="stylesheet" type="text/css" href="index.css" />
+<style>
+	pre.code{
+		-moz-tab-size: 4; /* For Firefox */
+		-o-tab-size: 4; /* For Opera 10.6-12.1 */
+		tab-size: 4; /* For Chrome */
+	}
+</style>
+<script type="text/javascript" src="resources/jQuery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.tablesorter.mod.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.hotkeys-0.7.8.js"></script>
+<script type="text/javascript" src="resources/eml_report_interactions.js"></script>
+<script type="text/javascript" src="resources/eml_report_layout.js"></script>
+<script type="text/javascript" src="rtwshrink.js"></script>
+<script type="text/javascript">
+var localizedMessages = {
+    callSelectPrompt: "Select a function call:",
+    callSelectSource: "Calls from this function",
+    callSelectTarget: "Calls to this function",
+    infoForExpression: "Information for the selected expression:",
+    infoForVarType: "Information for the selected variable:",
+    infoForVarConst: "Information for the selected compile-time constant:",
+    infoForVarNone: "This variable does not have information associated with it.",
+    infoForFilter: "Matched {0}/{1} functions, {2}/{3} methods",
+    autoExtrinsicCall: "Only supported within the MATLAB environment."
+};
+var keyBindings = {
+        selectMCodeTab: "Ctrl+m",
+    selectCallStackTab: "Ctrl+k",
+        selectCCodeTab: "Ctrl+c",
+       selectReportTab: "Ctrl+r",
+     selectCenterPanel: "Ctrl+w",
+      selectSummaryTab: "Ctrl+s",
+     selectMessagesTab: "Ctrl+a",
+    selectWatchListTab: "Ctrl+v",
+     selectBuildLogTab: "Ctrl+t",
+    clearAllHighlights: "Esc"
+};
+var functionInfoTable = {
+ MATLABcode1: "getDelta_1D1_mcode.html",
+ fpath1: "/home/kai/QuatCom/matlab_function/getDelta_1D.m",
+ lines1: [1, 1, 200],
+ watch1: "getDelta_1D1_watch.html",
+ title1: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getDelta_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getDelta_1D.m')\">getDelta_1D</a></span>",
+ tcall1: [  ],
+ scall1: [ [ "From line 37 to deg2rad", "8#srcline1" ], [ "From line 124 to getDelta_1D > delta_est_window", "302#srcline200" ], [ "From line 133 to getDelta_1D > delta_est_window", "302#srcline200" ], [ "From line 149 to getDelta_1D > getWindowWeight", "331#srcline220" ], [ "From line 187 to headingFilter_extrap", "404#srcline1" ] ],
+ MATLABcode8: "deg2rad8_mcode.html",
+ fpath8: "/home/kai/headingCorr2/11_OrientationFunctions/deg2rad.m",
+ lines8: [1, 1, 4],
+ watch8: "deg2rad8_watch.html",
+ title8: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/deg2rad.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/deg2rad.m')\">deg2rad</a></span>",
+ tcall8: [ [ "From getDelta_1D line 37", "1#F8N3:B186" ] ],
+ scall8: [  ],
+ MATLABcode95: "getQuat95_mcode.html",
+ fpath95: "/home/kai/headingCorr2/11_OrientationFunctions/getQuat.m",
+ lines95: [1, 1, 10],
+ watch95: "getQuat95_watch.html",
+ title95: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/getQuat.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/getQuat.m')\">getQuat</a></span>",
+ tcall95: [ [ "From getErrorAndJac_1D > cost_euler1D line 58", "273#F95N16:B283" ], [ "From getErrorAndJac_1D > cost_euler1D line 62", "273#F95N16:B294" ] ],
+ scall95: [  ],
+ MATLABcode125: "quaternionMultiply125_mcode.html",
+ fpath125: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m",
+ lines125: [1, 1, 22],
+ watch125: "quaternionMultiply125_watch.html",
+ title125: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m')\">quaternionMultiply &gt; 1</a></span>",
+ tcall125: [ [ "From quaternionRotate line 8", "267#F125N21:B20" ], [ "From getErrorAndJac_1D > cost_euler1D line 63", "273#F125N21:B317" ], [ "From getErrorAndJac_1D > cost_euler1D line 64", "273#F125N21:B324" ] ],
+ scall125: [  ],
+ MATLABcode172: "quaternionInvert172_mcode.html",
+ fpath172: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionInvert.m",
+ lines172: [1, 1, 7],
+ watch172: "quaternionInvert172_watch.html",
+ title172: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/quaternionInvert.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/quaternionInvert.m')\">quaternionInvert</a></span>",
+ tcall172: [ [ "From quaternionRotate line 7", "267#F172N20:B12" ], [ "From getErrorAndJac_1D > cost_euler1D line 65", "273#F172N20:B335" ] ],
+ scall172: [  ],
+ MATLABcode173: "quaternionMultiply173_mcode.html",
+ fpath173: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m",
+ lines173: [1, 1, 22],
+ watch173: "quaternionMultiply173_watch.html",
+ title173: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m')\">quaternionMultiply &gt; 2</a></span>",
+ tcall173: [ [ "From getErrorAndJac_1D > cost_euler1D line 65", "273#F173N21:B333" ] ],
+ scall173: [  ],
+ MATLABcode175: "quaternionMultiply175_mcode.html",
+ fpath175: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m",
+ lines175: [1, 1, 22],
+ watch175: "quaternionMultiply175_watch.html",
+ title175: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m')\">quaternionMultiply &gt; 3</a></span>",
+ tcall175: [ [ "From getErrorAndJac_1D > cost_euler1D line 65", "273#F175N21:B331" ] ],
+ scall175: [  ],
+ MATLABcode188: "conventionIdentifierToNum188_mcode.html",
+ fpath188: "/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m",
+ lines188: [62, 63, 75],
+ watch188: "conventionIdentifierToNum188_watch.html",
+ title188: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m')\">getEulerAngles &gt; conventionIdentifierToNum</a></span>",
+ tcall188: [ [ "From getEulerAngles line 18", "265#F188N15:B46" ], [ "From getEulerAngles line 19", "265#F188N15:B54" ], [ "From getEulerAngles line 20", "265#F188N15:B62" ] ],
+ scall188: [  ],
+ MATLABcode255: "clip255_mcode.html",
+ fpath255: "/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m",
+ lines255: [74, 75, 84],
+ watch255: "clip255_watch.html",
+ title255: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m')\">getEulerAngles &gt; clip</a></span>",
+ tcall255: [ [ "From getEulerAngles line 53", "265#F255N14:B408" ] ],
+ scall255: [  ],
+ MATLABcode265: "getEulerAngles265_mcode.html",
+ fpath265: "/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m",
+ lines265: [1, 1, 63],
+ watch265: "getEulerAngles265_watch.html",
+ title265: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m')\">getEulerAngles</a></span>",
+ tcall265: [ [ "From getErrorAndJac_1D > cost_euler1D line 67", "273#F265N13:B343" ] ],
+ scall265: [ [ "From line 18 to getEulerAngles > conventionIdentifierToNum", "188#srcline63" ], [ "From line 19 to getEulerAngles > conventionIdentifierToNum", "188#srcline63" ], [ "From line 20 to getEulerAngles > conventionIdentifierToNum", "188#srcline63" ], [ "From line 53 to getEulerAngles > clip", "255#srcline75" ] ],
+ MATLABcode266: "quaternionMultiply266_mcode.html",
+ fpath266: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m",
+ lines266: [1, 1, 22],
+ watch266: "quaternionMultiply266_watch.html",
+ title266: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m')\">quaternionMultiply &gt; 4</a></span>",
+ tcall266: [ [ "From quaternionRotate line 8", "267#F266N21:B18" ] ],
+ scall266: [  ],
+ MATLABcode267: "quaternionRotate267_mcode.html",
+ fpath267: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionRotate.m",
+ lines267: [1, 1, 11],
+ watch267: "quaternionRotate267_watch.html",
+ title267: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/quaternionRotate.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/quaternionRotate.m')\">quaternionRotate</a></span>",
+ tcall267: [ [ "From getErrorAndJac_1D > getWeight line 135", "272#F267N22:B742" ], [ "From getErrorAndJac_1D > getWeight line 136", "272#F267N22:B749" ], [ "From getDelta_1D > getWindowWeight line 221", "331#F267N22:B1006" ], [ "From getDelta_1D > getWindowWeight line 222", "331#F267N22:B1013" ] ],
+ scall267: [ [ "From line 7 to quaternionInvert", "172#srcline1" ], [ "From line 8 to quaternionMultiply > 1", "125#srcline1" ], [ "From line 8 to quaternionMultiply > 4", "266#srcline1" ] ],
+ MATLABcode272: "getWeight272_mcode.html",
+ fpath272: "/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m",
+ lines272: [130, 133, 140],
+ watch272: "getWeight272_watch.html",
+ title272: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m')\">getErrorAndJac_1D &gt; getWeight</a></span>",
+ tcall272: [ [ "From getErrorAndJac_1D > cost_euler1D line 71", "273#F272N12:B367" ] ],
+ scall272: [ [ "From line 135 to quaternionRotate", "267#srcline1" ], [ "From line 136 to quaternionRotate", "267#srcline1" ] ],
+ MATLABcode273: "cost_euler1D273_mcode.html",
+ fpath273: "/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m",
+ lines273: [49, 52, 77],
+ watch273: "cost_euler1D273_watch.html",
+ title273: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m')\">getErrorAndJac_1D &gt; cost_euler1D</a></span>",
+ tcall273: [ [ "From getErrorAndJac_1D > getErrorAndJac_euler1D line 43", "279#F273N10:B217" ], [ "From getErrorAndJac_1D > getErrorAndJac_euler1D line 46", "279#F273N10:B231" ] ],
+ scall273: [ [ "From line 58 to getQuat", "95#srcline1" ], [ "From line 62 to getQuat", "95#srcline1" ], [ "From line 63 to quaternionMultiply > 1", "125#srcline1" ], [ "From line 64 to quaternionMultiply > 1", "125#srcline1" ], [ "From line 65 to quaternionInvert", "172#srcline1" ], [ "From line 65 to quaternionMultiply > 2", "173#srcline1" ], [ "From line 65 to quaternionMultiply > 3", "175#srcline1" ], [ "From line 67 to getEulerAngles", "265#srcline1" ], [ "From line 71 to getErrorAndJac_1D > getWeight", "272#srcline133" ] ],
+ MATLABcode279: "getErrorAndJac_euler1D279_mcode.html",
+ fpath279: "/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m",
+ lines279: [38, 41, 52],
+ watch279: "getErrorAndJac_euler1D279_watch.html",
+ title279: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m')\">getErrorAndJac_1D &gt; getErrorAndJac_euler1D</a></span>",
+ tcall279: [ [ "From getErrorAndJac_1D line 9", "280#F279N11:B49" ] ],
+ scall279: [ [ "From line 43 to getErrorAndJac_1D > cost_euler1D", "273#srcline52" ], [ "From line 46 to getErrorAndJac_1D > cost_euler1D", "273#srcline52" ] ],
+ MATLABcode280: "getErrorAndJac_1D280_mcode.html",
+ fpath280: "/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m",
+ lines280: [1, 1, 19],
+ watch280: "getErrorAndJac_1D280_watch.html",
+ title280: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m')\">getErrorAndJac_1D</a></span>",
+ tcall280: [ [ "From getDelta_1D > gnStep line 213", "297#F280N9:B965" ] ],
+ scall280: [ [ "From line 9 to getErrorAndJac_1D > getErrorAndJac_euler1D", "279#srcline41" ] ],
+ MATLABcode297: "gnStep297_mcode.html",
+ fpath297: "/home/kai/QuatCom/matlab_function/getDelta_1D.m",
+ lines297: [209, 212, 220],
+ watch297: "gnStep297_watch.html",
+ title297: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getDelta_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getDelta_1D.m')\">getDelta_1D &gt; gnStep</a></span>",
+ tcall297: [ [ "From getDelta_1D > delta_est_window line 204", "302#F297N8:B928" ] ],
+ scall297: [ [ "From line 213 to getErrorAndJac_1D", "280#srcline1" ] ],
+ MATLABcode301: "limitHeading301_mcode.html",
+ fpath301: "/home/kai/headingCorr2/11_OrientationFunctions/limitHeading.m",
+ lines301: [1, 1, 11],
+ watch301: "limitHeading301_watch.html",
+ title301: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/limitHeading.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/limitHeading.m')\">limitHeading</a></span>",
+ tcall301: [ [ "From getDelta_1D > delta_est_window line 207", "302#F301N18:B945" ] ],
+ scall301: [  ],
+ MATLABcode302: "delta_est_window302_mcode.html",
+ fpath302: "/home/kai/QuatCom/matlab_function/getDelta_1D.m",
+ lines302: [197, 200, 212],
+ watch302: "delta_est_window302_watch.html",
+ title302: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getDelta_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getDelta_1D.m')\">getDelta_1D &gt; delta_est_window</a></span>",
+ tcall302: [ [ "From getDelta_1D line 124", "1#F302N6:B633" ], [ "From getDelta_1D line 133", "1#F302N6:B669" ] ],
+ scall302: [ [ "From line 204 to getDelta_1D > gnStep", "297#srcline212" ], [ "From line 207 to limitHeading", "301#srcline1" ] ],
+ MATLABcode331: "getWindowWeight331_mcode.html",
+ fpath331: "/home/kai/QuatCom/matlab_function/getDelta_1D.m",
+ lines331: [217, 220, 226],
+ watch331: "getWindowWeight331_watch.html",
+ title331: "Function: <span class='functionname'><a title='/home/kai/QuatCom/matlab_function/getDelta_1D.m' class='functionlink' href=\"matlab: open('/home/kai/QuatCom/matlab_function/getDelta_1D.m')\">getDelta_1D &gt; getWindowWeight</a></span>",
+ tcall331: [ [ "From getDelta_1D line 149", "1#F331N7:B718" ] ],
+ scall331: [ [ "From line 221 to quaternionRotate", "267#srcline1" ], [ "From line 222 to quaternionRotate", "267#srcline1" ] ],
+ MATLABcode403: "local_wrapToPi403_mcode.html",
+ fpath403: "/home/kai/headingCorr2/11_OrientationFunctions/local_wrapToPi.m",
+ lines403: [1, 1, 4],
+ watch403: "local_wrapToPi403_watch.html",
+ title403: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/11_OrientationFunctions/local_wrapToPi.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/11_OrientationFunctions/local_wrapToPi.m')\">local_wrapToPi</a></span>",
+ tcall403: [ [ "From headingFilter_extrap line 37", "404#F403N19:B166" ], [ "From headingFilter_extrap line 39", "404#F403N19:B209" ], [ "From headingFilter_extrap line 42", "404#F403N19:B263" ], [ "From headingFilter_extrap line 44", "404#F403N19:B308" ] ],
+ scall403: [  ],
+ MATLABcode404: "headingFilter_extrap404_mcode.html",
+ fpath404: "/home/kai/headingCorr2/05_HeadingEstimation/headingFilter_extrap.m",
+ lines404: [1, 1, 52],
+ watch404: "headingFilter_extrap404_watch.html",
+ title404: "Function: <span class='functionname'><a title='/home/kai/headingCorr2/05_HeadingEstimation/headingFilter_extrap.m' class='functionlink' href=\"matlab: open('/home/kai/headingCorr2/05_HeadingEstimation/headingFilter_extrap.m')\">headingFilter_extrap</a></span>",
+ tcall404: [ [ "From getDelta_1D line 187", "1#F404N17:B813" ] ],
+ scall404: [ [ "From line 37 to local_wrapToPi", "403#srcline1" ], [ "From line 39 to local_wrapToPi", "403#srcline1" ], [ "From line 42 to local_wrapToPi", "403#srcline1" ], [ "From line 44 to local_wrapToPi", "403#srcline1" ] ],
+ rootFcnID: "1",
+ firstPage: "getDelta_1D_cpp.html",
+ htmlRoot: "/home/kai/QuatCom/matlab_function/codegen/lib/getDelta_1D/html/"
+};
+var scriptInfoTable = {
+ fpath1: "/home/kai/QuatCom/matlab_function/getDelta_1D.m",
+ fpath2: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/isBuiltInNumeric.m",
+ fpath3: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/scalexpCompatible.m",
+ fpath4: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/div.m",
+ fpath5: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/rdivide.m",
+ fpath6: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/mrdivide.p",
+ fpath7: "/home/kai/headingCorr2/11_OrientationFunctions/deg2rad.m",
+ fpath8: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/length.m",
+ fpath9: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/isnan.m",
+ fpath10: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/colon.m",
+ fpath11: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/nan.m",
+ fpath12: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/isinf.m",
+ fpath13: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/floor.m",
+ fpath14: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/applyScalarFunctionInPlace.m",
+ fpath15: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/floor.m",
+ fpath16: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/abs.m",
+ fpath17: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/applyScalarFunction.m",
+ fpath18: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/abs.m",
+ fpath19: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/isFloatClass.m",
+ fpath20: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/floatModel.m",
+ fpath21: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/private/eml_eps.m",
+ fpath22: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/eps.m",
+ fpath23: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/intmax.m",
+ fpath24: "/opt/MATLAB/R2017b/toolbox/shared/coder/coder/+coder/+internal/indexIntRelop.m",
+ fpath25: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/intmin.m",
+ fpath26: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/indexMinus.m",
+ fpath27: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/indexDivide.m",
+ fpath28: "/opt/MATLAB/R2017b/toolbox/eml/lib/fixedpoint/isnumerictype.m",
+ fpath29: "/opt/MATLAB/R2017b/toolbox/eml/lib/fixedpoint/isfi.m",
+ fpath30: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m",
+ fpath31: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/indexTimes.m",
+ fpath32: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/indexPlus.m",
+ fpath33: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/matfun/norm.m",
+ fpath34: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+blas/inline.m",
+ fpath35: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+blas/use_refblas.m",
+ fpath36: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/private/eml_realmin.m",
+ fpath37: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/realmin.m",
+ fpath38: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/sparfun/issparse.m",
+ fpath39: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/isDomainError.m",
+ fpath40: "/opt/MATLAB/R2017b/toolbox/shared/coder/coder/+coder/+internal/error.m",
+ fpath41: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/sqrt.m",
+ fpath42: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/sqrt.m",
+ fpath43: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+refblas/xnrm2.m",
+ fpath44: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+blas/xnrm2.m",
+ fpath45: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/cos.m",
+ fpath46: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/cos.m",
+ fpath47: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/sin.m",
+ fpath48: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/sin.m",
+ fpath49: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m",
+ fpath50: "/home/kai/headingCorr2/11_OrientationFunctions/getQuat.m",
+ fpath51: "/opt/MATLAB/R2017b/toolbox/shared/coder/coder/+coder/+internal/narginchk.m",
+ fpath52: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/private/eml_isequal_core.m",
+ fpath53: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/isequal.m",
+ fpath54: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/scalarEg.m",
+ fpath55: "/opt/MATLAB/R2017b/toolbox/eml/lib/fixedpoint/isfimath.m",
+ fpath56: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+refblas/xdotx.m",
+ fpath57: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+refblas/xdot.m",
+ fpath58: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+blas/xdot.m",
+ fpath59: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+blas/xdotc.m",
+ fpath60: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/specfun/dot.m",
+ fpath61: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/acos.m",
+ fpath62: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/acos.m",
+ fpath63: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/specfun/cross.m",
+ fpath64: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionMultiply.m",
+ fpath65: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/cat.m",
+ fpath66: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/scalexpAllocNoCheck.m",
+ fpath67: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/scalexpAlloc.m",
+ fpath68: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/minOrMax.m",
+ fpath69: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/datafun/max.m",
+ fpath70: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionInvert.m",
+ fpath71: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/lang/error.m",
+ fpath72: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/constNonSingletonDim.m",
+ fpath73: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/allOrAny.m",
+ fpath74: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/all.m",
+ fpath75: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/prodsize.m",
+ fpath76: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/fliplr.m",
+ fpath77: "/home/kai/headingCorr2/11_OrientationFunctions/getEulerAngles.m",
+ fpath78: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/isfinite.m",
+ fpath79: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/mod.m",
+ fpath80: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/applyBinaryScalarFunction.m",
+ fpath81: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/mod.m",
+ fpath82: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/codingForGPU.m",
+ fpath83: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/useParforConst.m",
+ fpath84: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/power.m",
+ fpath85: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/atan2.m",
+ fpath86: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/atan2.m",
+ fpath87: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/datafun/min.m",
+ fpath88: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/asin.m",
+ fpath89: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/asin.m",
+ fpath90: "/home/kai/headingCorr2/11_OrientationFunctions/quaternionRotate.m",
+ fpath91: "/home/kai/QuatCom/matlab_function/getErrorAndJac_1D.m",
+ fpath92: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/ops/mldivide.p",
+ fpath93: "/home/kai/headingCorr2/11_OrientationFunctions/limitHeading.m",
+ fpath94: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/datafun/private/process_sumprod_inputs.m",
+ fpath95: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/datafun/private/combineVectorElements.m",
+ fpath96: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/datafun/mean.m",
+ fpath97: "/opt/MATLAB/R2017b/toolbox/signal/signal/rms.m",
+ fpath98: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/ismatrix.m",
+ fpath99: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/isrow.m",
+ fpath100: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/nonSingletonDim.m",
+ fpath101: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/rem.m",
+ fpath102: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/rem.m",
+ fpath103: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/fix.m",
+ fpath104: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/fix.m",
+ fpath105: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/round.m",
+ fpath106: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/round.m",
+ fpath107: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/unwrap.m",
+ fpath108: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/private/eml_realmax.m",
+ fpath109: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/realmax.m",
+ fpath110: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/log.m",
+ fpath111: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/log.m",
+ fpath112: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/+scalar/exp.m",
+ fpath113: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elfun/exp.m",
+ fpath114: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/assertValidSizeArg.m",
+ fpath115: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/isIntegerClass.m",
+ fpath116: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/repmat.m",
+ fpath117: "/home/kai/headingCorr2/11_OrientationFunctions/local_wrapToPi.m",
+ fpath118: "/home/kai/headingCorr2/05_HeadingEstimation/headingFilter_extrap.m",
+ fpath119: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/indexShapeCheck.m",
+ fpath120: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/strfun/strlength.m",
+ fpath121: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/polyfun/interp1.m",
+ fpath122: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/bsearch.m",
+ fpath123: "/opt/MATLAB/R2017b/toolbox/eml/eml/+coder/+internal/assertValidDim.m",
+ fpath124: "/opt/MATLAB/R2017b/toolbox/eml/lib/matlab/elmat/flip.m"
+};
+</script>
+</head>
+<body>
+
+<div class="west">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="MATLABcode"><span>MATLAB code</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="callstack"><span>Call stack</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="ccode"><span>C code</span></span></li>
+</ul>
+<div id="MATLABcodebody" class="ui-tabs-panel">
+<!-- Begin Filter -->
+<div class="grayline methodset" onclick="filterClick(event);">
+<a class="collapsed">Filter</a>
+</div>
+<div id="filterbody" class="hidden">
+<table class="myfunc-filter-tbl">
+<tr>
+<td title="Use this filter to display only functions and methods that contain variables or expressions with the specified attributes." colspan="2" class="checkbox">
+<div class="myfunc-filterby-chk"><input type="checkbox" class="filterenable" />
+<div class="filter-enable-lbl">Filter functions and methods</div></div></td></tr><tr>
+<td class="label"><div class="myfunc-filterby-lbl">Filter by:</div></td>
+<td class="select">
+<div class="filters">
+<select class="myfunc-filterby">
+<option id="size">Size</option>
+<option id="complex">Complexity</option>
+<option id="class">Class</option>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label"><div class="myfunc-filterstr-lbl">Filter:</div></td>
+<td class="input"><div>
+
+<div class="size">
+<select class="myfunc-filter size">
+<option value="1">1 x 0</option>
+<option value="1 8 95 125 173 175 188 255 265 266 273 279 280 297 301 302 331 403 404">1 x 1</option>
+<option value="1 95 265 267 272 273 279 280 297 302 331">1 x 3</option>
+<option value="95 125 173 273">1 x 4</option>
+<option value="1">1 x 6</option>
+<option value="1 280 297 302">1 x 8</option>
+<option value="1 404">1 x <b>:</b>?</option>
+<option value="1 255 272 273 279 280 297 331 404"><b>:</b>? x 1</option>
+<option value="265 267 272 273 331"><b>:</b>? x 3</option>
+<option value="1 125 172 173 175 265 266 267 272 273 279 280 297 302 331"><b>:</b>? x 4</option>
+<option value="172 173 266 267"><b>:</b>? x <b>:</b>4</option>
+<option value="404"><b>:</b>? x <b>:</b>?</option>
+</select>
+</div>
+
+<div class="complex">
+<select class="myfunc-filter complex">
+<option value="">Complex values</option>
+<option value="1 8 95 125 172 173 175 188 255 265 266 267 272 273 279 280 297 301 302 331 403 404">Real values</option>
+</select>
+</div>
+<!-- Begin Class Filter -->
+<div class="class">
+<select class="myfunc-filter class">
+<option value="1">cell</option>
+<option value="1 188 265 280 297 302">char</option>
+<option value="1 8 95 125 172 173 175 188 255 265 266 267 272 273 279 280 297 301 302 331 403 404">double</option>
+<option value="1 265">logical</option>
+<option value="1">struct</option>
+</select>
+</div>
+<!-- End Class Filter -->
+</div>
+</td>
+</tr>
+</table>
+<div class="myfunc-count"></div>
+</div>
+<!-- End Filter -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionSetClick(event);">
+<a class="expanded">Functions</a>
+</div>
+<!-- Begin Function Tree -->
+<div id="functiontreebody">
+<div class="functionwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionTreeClick(event);">
+<ol class="tree">
+<!-- Begin Function Tree Roots -->
+<li class="leaf  passed"><a href="#" class="fcn  " id="F8N3:F1">deg2rad</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F1N5:F2">getDelta_1D</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F302N6:F3">getDelta_1D &gt; delta_est_window</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F331N7:F4">getDelta_1D &gt; getWindowWeight</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F297N8:F5">getDelta_1D &gt; gnStep</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F280N9:F6">getErrorAndJac_1D</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F273N10:F7">getErrorAndJac_1D &gt; cost_euler1D</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F279N11:F8">getErrorAndJac_1D &gt; getErrorAndJac_euler1D</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F272N12:F9">getErrorAndJac_1D &gt; getWeight</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F265N13:F10">getEulerAngles</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F255N14:F11">getEulerAngles &gt; clip</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F188N15:F12">getEulerAngles &gt; conventionIdentifierToNum</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F95N16:F13">getQuat</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F404N17:F14">headingFilter_extrap</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F301N18:F15">limitHeading</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F403N19:F16">local_wrapToPi</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F172N20:F17">quaternionInvert</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F125N21:F18">quaternionMultiply &gt; 1</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F173N21:F19">quaternionMultiply &gt; 2</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F175N21:F20">quaternionMultiply &gt; 3</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F266N21:F21">quaternionMultiply &gt; 4</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F267N22:F22">quaternionRotate</a></li>
+<!-- End Function Tree Roots -->
+</ol>
+<!-- Function Tree Nodes -->
+<div class="functiontreenodes hidden">
+</div>
+<!-- End Function Tree Nodes -->
+</div>
+</div>
+<!-- End Function Tree -->
+</div>
+<!-- Begin Call Tree -->
+<div id="callstackbody" class="ui-tabs-panel hidden">
+<div class="treewrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="callTreeClick(event);">
+<ol class="tree">
+<!-- Call Tree Root -->
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F1N5:L1">getDelta_1D</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F8N3:L2">deg2rad</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F302N6:L3">getDelta_1D &gt; delta_est_window</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F331N7:L4">getDelta_1D &gt; getWindowWeight</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F404N17:L5">headingFilter_extrap</a></li>
+</ul>
+</li>
+</ol>
+<!-- Call Tree Nodes -->
+<div class="callstacknodes hidden">
+<ol class="callstacknode" id="callstacknode1">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F1N5:l1">getDelta_1D</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F8N3:l2">deg2rad</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F302N6:l3">getDelta_1D &gt; delta_est_window</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F331N7:l4">getDelta_1D &gt; getWindowWeight</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F404N17:l5">headingFilter_extrap</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode8">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F8N3:l6">deg2rad</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode95">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F95N16:l7">getQuat</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode125">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F125N21:l8">quaternionMultiply &gt; 1</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode172">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F172N20:l9">quaternionInvert</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode173">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F173N21:l10">quaternionMultiply &gt; 2</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode175">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F175N21:l11">quaternionMultiply &gt; 3</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode188">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F188N15:l12">getEulerAngles &gt; conventionIdentifierToNum</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode255">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F255N14:l13">getEulerAngles &gt; clip</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode265">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F265N13:l14">getEulerAngles</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F188N15:l15">getEulerAngles &gt; conventionIdentifierToNum</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F255N14:l16">getEulerAngles &gt; clip</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode266">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F266N21:l17">quaternionMultiply &gt; 4</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode267">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F267N22:l18">quaternionRotate</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F172N20:l19">quaternionInvert</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F125N21:l20">quaternionMultiply &gt; 1</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F266N21:l21">quaternionMultiply &gt; 4</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode272">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F272N12:l22">getErrorAndJac_1D &gt; getWeight</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F267N22:l23">quaternionRotate</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode273">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F273N10:l24">getErrorAndJac_1D &gt; cost_euler1D</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F95N16:l25">getQuat</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F125N21:l26">quaternionMultiply &gt; 1</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F172N20:l27">quaternionInvert</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F173N21:l28">quaternionMultiply &gt; 2</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F175N21:l29">quaternionMultiply &gt; 3</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F265N13:l30">getEulerAngles</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F272N12:l31">getErrorAndJac_1D &gt; getWeight</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode279">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F279N11:l32">getErrorAndJac_1D &gt; getErrorAndJac_euler1D</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F273N10:l33">getErrorAndJac_1D &gt; cost_euler1D</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode280">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F280N9:l34">getErrorAndJac_1D</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F279N11:l35">getErrorAndJac_1D &gt; getErrorAndJac_euler1D</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode297">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F297N8:l36">getDelta_1D &gt; gnStep</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F280N9:l37">getErrorAndJac_1D</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode301">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F301N18:l38">limitHeading</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode302">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F302N6:l39">getDelta_1D &gt; delta_est_window</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F297N8:l40">getDelta_1D &gt; gnStep</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F301N18:l41">limitHeading</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode331">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F331N7:l42">getDelta_1D &gt; getWindowWeight</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F267N22:l43">quaternionRotate</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode403">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F403N19:l44">local_wrapToPi</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode404">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F404N17:l45">headingFilter_extrap</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F403N19:l46">local_wrapToPi</a></li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<!-- End Call Tree -->
+<!-- Begin C Code -->
+<div id="ccodebody" class="ui-tabs-panel hidden">
+
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="reportFileClick(event);">
+<tbody>
+<tr class="report" id="metrics.html"><td class="report"><a href="#">Static Code Metrics Report</a></td></tr>
+</tbody>
+</table><div class="grayline methodset" onclick="ccodeClick(event,1);">
+<a class="expanded">Target Source Files</a>
+</div>
+<!-- Begin C Code List -->
+<div id="ccodelistbody1" class="visible">
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="cFileClick(event);">
+<tbody>
+<tr class="ccode" id="atan2_cpp.html"><td class="ccode"><a href="#">atan2.cpp</a></td></tr>
+<tr class="ccode" id="atan2_h.html"><td class="ccode"><a href="#">atan2.h</a></td></tr>
+<tr class="ccode" id="bsearch_cpp.html"><td class="ccode"><a href="#">bsearch.cpp</a></td></tr>
+<tr class="ccode" id="bsearch_h.html"><td class="ccode"><a href="#">bsearch.h</a></td></tr>
+<tr class="ccode" id="exp_cpp.html"><td class="ccode"><a href="#">exp.cpp</a></td></tr>
+<tr class="ccode" id="exp_h.html"><td class="ccode"><a href="#">exp.h</a></td></tr>
+<tr class="ccode" id="getDelta_1D_cpp.html"><td class="ccode"><a href="#">getDelta_1D.cpp</a></td></tr>
+<tr class="ccode" id="getDelta_1D_h.html"><td class="ccode"><a href="#">getDelta_1D.h</a></td></tr>
+<tr class="ccode" id="getDelta_1D_emxAPI_cpp.html"><td class="ccode"><a href="#">getDelta_1D_emxAPI.cpp</a></td></tr>
+<tr class="ccode" id="getDelta_1D_emxAPI_h.html"><td class="ccode"><a href="#">getDelta_1D_emxAPI.h</a></td></tr>
+<tr class="ccode" id="getDelta_1D_emxutil_cpp.html"><td class="ccode"><a href="#">getDelta_1D_emxutil.cpp</a></td></tr>
+<tr class="ccode" id="getDelta_1D_emxutil_h.html"><td class="ccode"><a href="#">getDelta_1D_emxutil.h</a></td></tr>
+<tr class="ccode" id="getDelta_1D_initialize_cpp.html"><td class="ccode"><a href="#">getDelta_1D_initialize.cpp</a></td></tr>
+<tr class="ccode" id="getDelta_1D_initialize_h.html"><td class="ccode"><a href="#">getDelta_1D_initialize.h</a></td></tr>
+<tr class="ccode" id="getDelta_1D_terminate_cpp.html"><td class="ccode"><a href="#">getDelta_1D_terminate.cpp</a></td></tr>
+<tr class="ccode" id="getDelta_1D_terminate_h.html"><td class="ccode"><a href="#">getDelta_1D_terminate.h</a></td></tr>
+<tr class="ccode" id="getDelta_1D_types_h.html"><td class="ccode"><a href="#">getDelta_1D_types.h</a></td></tr>
+<tr class="ccode" id="getErrorAndJac_1D_cpp.html"><td class="ccode"><a href="#">getErrorAndJac_1D.cpp</a></td></tr>
+<tr class="ccode" id="getErrorAndJac_1D_h.html"><td class="ccode"><a href="#">getErrorAndJac_1D.h</a></td></tr>
+<tr class="ccode" id="getQuat_cpp.html"><td class="ccode"><a href="#">getQuat.cpp</a></td></tr>
+<tr class="ccode" id="getQuat_h.html"><td class="ccode"><a href="#">getQuat.h</a></td></tr>
+<tr class="ccode" id="headingFilter_extrap_cpp.html"><td class="ccode"><a href="#">headingFilter_extrap.cpp</a></td></tr>
+<tr class="ccode" id="headingFilter_extrap_h.html"><td class="ccode"><a href="#">headingFilter_extrap.h</a></td></tr>
+<tr class="ccode" id="interp1_cpp.html"><td class="ccode"><a href="#">interp1.cpp</a></td></tr>
+<tr class="ccode" id="interp1_h.html"><td class="ccode"><a href="#">interp1.h</a></td></tr>
+<tr class="ccode" id="power_cpp.html"><td class="ccode"><a href="#">power.cpp</a></td></tr>
+<tr class="ccode" id="power_h.html"><td class="ccode"><a href="#">power.h</a></td></tr>
+<tr class="ccode" id="quaternionInvert_cpp.html"><td class="ccode"><a href="#">quaternionInvert.cpp</a></td></tr>
+<tr class="ccode" id="quaternionInvert_h.html"><td class="ccode"><a href="#">quaternionInvert.h</a></td></tr>
+<tr class="ccode" id="quaternionMultiply_cpp.html"><td class="ccode"><a href="#">quaternionMultiply.cpp</a></td></tr>
+<tr class="ccode" id="quaternionMultiply_h.html"><td class="ccode"><a href="#">quaternionMultiply.h</a></td></tr>
+<tr class="ccode" id="quaternionRotate_cpp.html"><td class="ccode"><a href="#">quaternionRotate.cpp</a></td></tr>
+<tr class="ccode" id="quaternionRotate_h.html"><td class="ccode"><a href="#">quaternionRotate.h</a></td></tr>
+<tr class="ccode" id="rdivide_cpp.html"><td class="ccode"><a href="#">rdivide.cpp</a></td></tr>
+<tr class="ccode" id="rdivide_h.html"><td class="ccode"><a href="#">rdivide.h</a></td></tr>
+<tr class="ccode" id="repmat_cpp.html"><td class="ccode"><a href="#">repmat.cpp</a></td></tr>
+<tr class="ccode" id="repmat_h.html"><td class="ccode"><a href="#">repmat.h</a></td></tr>
+<tr class="ccode" id="rtGetInf_cpp.html"><td class="ccode"><a href="#">rtGetInf.cpp</a></td></tr>
+<tr class="ccode" id="rtGetInf_h.html"><td class="ccode"><a href="#">rtGetInf.h</a></td></tr>
+<tr class="ccode" id="rtGetNaN_cpp.html"><td class="ccode"><a href="#">rtGetNaN.cpp</a></td></tr>
+<tr class="ccode" id="rtGetNaN_h.html"><td class="ccode"><a href="#">rtGetNaN.h</a></td></tr>
+<tr class="ccode" id="rt_defines_h.html"><td class="ccode"><a href="#">rt_defines.h</a></td></tr>
+<tr class="ccode" id="rt_nonfinite_cpp.html"><td class="ccode"><a href="#">rt_nonfinite.cpp</a></td></tr>
+<tr class="ccode" id="rt_nonfinite_h.html"><td class="ccode"><a href="#">rt_nonfinite.h</a></td></tr>
+<tr class="ccode" id="rtwtypes_h.html"><td class="ccode"><a href="#">rtwtypes.h</a></td></tr>
+<tr class="ccode" id="sqrt_cpp.html"><td class="ccode"><a href="#">sqrt.cpp</a></td></tr>
+<tr class="ccode" id="sqrt_h.html"><td class="ccode"><a href="#">sqrt.h</a></td></tr>
+<tr class="ccode" id="unwrap_cpp.html"><td class="ccode"><a href="#">unwrap.cpp</a></td></tr>
+<tr class="ccode" id="unwrap_h.html"><td class="ccode"><a href="#">unwrap.h</a></td></tr>
+</tbody>
+</table>
+</div>
+<!-- End C Code List -->
+<div class="grayline methodset" onclick="ccodeClick(event,2);">
+<a class="expanded">Example Source Files</a>
+</div>
+<!-- Begin C Code List -->
+<div id="ccodelistbody2" class="visible">
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="cFileClick(event);">
+<tbody>
+<tr class="ccode" id="main_h.html"><td class="ccode"><a href="#">main.h</a></td></tr>
+</tbody>
+</table>
+</div>
+<!-- End C Code List -->
+</div>
+<!-- End C Code -->
+</div>
+<!-- Tooltips -->
+<div class="aux hidden">
+<div class="tooltips">
+<div class="tooltip" id="TT1"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT2"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>struct</td></tr></table></div>
+<div class="tooltip" id="TT3"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT4"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>struct</td></tr></table></div>
+<div class="tooltip" id="TT5"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 4</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT6"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT7"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT8"><table class="tooltip"><tr><th>Size</th><td>1 x 8</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT9"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT10"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT11"><table class="tooltip"><tr><th>Size</th><td>3 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT12"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT13"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT14"><table class="tooltip"><tr><th>Size</th><td>4 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT15"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT16"><table class="tooltip"><tr><th>Size</th><td>1 x 5</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT17"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT18"><table class="tooltip"><tr><th>Size</th><td>0 x 0</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT19"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT20"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT21"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int32</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT22"><table class="tooltip"><tr><th>Size</th><td>1 x 23</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT23"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>uint8</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT24"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT25"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT26"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT27"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT28"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT29"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT30"><table class="tooltip"><tr><th>Size</th><td>1 x 7</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT31"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT32"><table class="tooltip"><tr><th>Size</th><td>1 x 30</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT33"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT34"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT35"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT36"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT37"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT38"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT39"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT40"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT41"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT42"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT43"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT44"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 3</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT45"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT46"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT47"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT48"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT49"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT50"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT51"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT52"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x <b>:</b>4</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT53"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT54"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x <b>:</b>3</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT55"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x <b>:</b>1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT56"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>mxArray</td></tr></table></div>
+<div class="tooltip" id="TT57"><table class="tooltip"><tr><th>Size</th><td>1 x 15</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT58"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT59"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT60"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>unknown</td></tr></table></div>
+<div class="tooltip" id="TT61"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT62"><table class="tooltip"><tr><th>Size</th><td>1 x 14</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT63"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT64"><table class="tooltip"><tr><th>Size</th><td>1 x 31</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT65"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT66"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT67"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT68"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int8</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT69"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT70"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT71"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT72"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT73"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT74"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT75"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT76"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT77"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>?</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT78"><table class="tooltip"><tr><th>Size</th><td>1 x 21</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT79"><table class="tooltip"><tr><th>Size</th><td>1 x 35</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT80"><table class="tooltip"><tr><th>Size</th><td>1 x 18</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT81"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT82"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="V1"><table class="tooltip"><tr><th>Value</th><td>    -1</br></td></tr></table></div>
+<div class="tooltip" id="V2"><table class="tooltip"><tr><th>Value</th><td>     1</br></td></tr></table></div>
+<div class="tooltip" id="V3"><table class="tooltip"><tr><th>Value</th><td>zxy</br></td></tr></table></div>
+<div class="tooltip" id="V4"><table class="tooltip"><tr><th>Value</th><td>   1</br></td></tr></table></div>
+<div class="tooltip" id="V5"><table class="tooltip"><tr><th>Value</th><td>     1     0     0</br></td></tr></table></div>
+<div class="tooltip" id="V6"><table class="tooltip"><tr><th>Value</th><td>euler_1d</br></td></tr></table></div>
+<div class="tooltip" id="V7"><table class="tooltip"><tr><th>Value</th><td>     2</br></td></tr></table></div>
+<div class="tooltip" id="V8"><table class="tooltip"><tr><th>Value</th><td>    10</br></td></tr></table></div>
+</div>
+</div>
+<!-- End Tooltips -->
+
+<div class="south">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="summary"><span>Summary</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="messages"><span>All Messages (0)</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="watchlist"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item hidden"><span class="tab-link" id="watchload"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="buildlog1"><span>Build Log</span></span></li>
+</ul>
+
+<!-- Compilation Summary -->
+<div id="summarybody" class="ui-tabs-panel">
+<table cellpadding="1" cellspacing="4">
+<tr><td>C source code generated on:</td><td>23-Jan-2020 01:47:08</td></tr>
+<tr><td>Coding target:</td><td>Static Library</td></tr>
+<tr><td>Number of errors:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of warnings:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of notices:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+</table>
+<p/><p/><table>
+<tr><td><b>Tell Us What You Think</b></td></tr>
+<tr><td>We value your feedback. Please take a few minutes to answer this short questionnaire regarding the Code Generation Report.</td></tr>
+<tr><td><a href="matlab: emlcprivate('launchReportSurvey');">&gt;&gt;Provide Feedback</a></td></tr>
+</table>
+</div>
+
+<!-- Message Table -->
+<div id="messagesbody" class="ui-tabs-panel hidden">
+<div>
+<div class="msgsuccess">Code generation successful. Click here to <a href="javaScript:selectSummaryTab();">view summary</a>.</div>
+</div>
+</div>
+<!-- Watchlist Table -->
+<div id="watchlistbody" class="ui-tabs-panel hidden">
+</div>
+<div id="watchloadbody" class="ui-tabs-panel hidden">
+Loading Variables table ...
+</div>
+
+<!-- Build Log -->
+<div id="buildlog1body" class="ui-tabs-panel hidden">
+<div class="grayline"></div>
+<table cellpadding="4" cellspacing="1"><tr>
+<td align="left" class="td-linebottomrt-gray" colspan="2">Build Parameters</td>
+</tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Build directory</td>
+<td align="left" valign="top" class="td-linebottomrt-link"><a href="matlab: cd('/home/kai/QuatCom/matlab_function/codegen/lib/getDelta_1D')">/home/kai/QuatCom/matlab_function/codegen/lib/getDelta_1D</a></td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make wrapper</td>
+<td align="left" valign="top" class="td-linebottomrt-link">"/opt/MATLAB/R2017b/bin/glnxa64/gmake"  -f getDelta_1D_rtw.mk all</td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make command</td>
+<td align="left" valign="top" class="td-linebottomrt-link">"/opt/MATLAB/R2017b/bin/glnxa64/gmake"  -f getDelta_1D_rtw.mk all</td></tr>
+</table>
+<br/>
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr><td align="left" class="td-linebottomrt-gray">Build Log</td></tr>
+<tr><td valign="top" class="td-script">
+<pre>
+<span class="td-line-number">    1   </span><span class="td-line-normal">Compilation suppressed: generating code only.</span>
+</pre>
+</td></tr></table>
+
+</div>
+
+<!-- Potential Differences -->
+<div id="potentialDifferencesBody" class="ui-tabs-panel hidden">
+</div>
+
+</div>
+<!-- Begin MATLAB Code Panel -->
+<div class="center">
+<div class="center-title">
+<div class="ui-tabs-nav-item ui-tabs-selected">
+<span class="functiontitle">
+</span>
+<!-- Begin Call Sites -->
+<span id="callsiteselecttable" class="call-sites-tbl">
+<span id="callsiteselectlabel" class="filtered">Calls:</span>
+<select id="callsiteselect" onchange="callSiteChange(event)">
+<option value="callsiteprompt">Select a function call:</option>
+</select>
+</span>
+<!-- End Call Sites -->
+</div>
+</div>
+<div class="ui-tabs-panel">
+<iframe id="hiddenCodeFrame"></iframe>
+<div class="code" onmouseover="mcodeMouseOver(event);" onmouseout="mcodeMouseOut(event);"onclick="mcodeClick(event);">
+</div>
+</div>
+</div>
+<!-- End MATLAB Code Panel -->
+</body>
+</html>

@@ -1,0 +1,10 @@
+setup.py
+OriEstIMU.egg-info/PKG-INFO
+OriEstIMU.egg-info/SOURCES.txt
+OriEstIMU.egg-info/dependency_links.txt
+OriEstIMU.egg-info/requires.txt
+OriEstIMU.egg-info/top_level.txt
+oriestimu/CSGutilities.cpp
+oriestimu/CsgOriEstIMU.cpp
+oriestimu/__init__.py
+oriestimu/oriestimu.cpp

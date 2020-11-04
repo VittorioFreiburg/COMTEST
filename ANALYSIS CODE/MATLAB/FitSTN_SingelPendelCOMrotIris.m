@@ -1,0 +1,1 @@
+%	FitSTN_SingelPendelCOMrotIris.m		13-Nov-06 --> 11.6.2012%function [Ka,Kp,Kd,Wp,Td,Kpas,Bpas]=FitSTN_SingelPendelCOMrotIris(ka,kp,kd,wp,td,kpas,bpas);PID_fit=[ka kp kd wp td kpas bpas];					% J fitPID_fit=fminsearch('FitSTN_err_SingelPendelCOMrotIris',PID_fit);Ka=PID_fit(1);Kp=PID_fit(2);Kd=PID_fit(3);Wp=PID_fit(4);Td=PID_fit(5);Kpas=PID_fit(6);Bpas=PID_fit(7);

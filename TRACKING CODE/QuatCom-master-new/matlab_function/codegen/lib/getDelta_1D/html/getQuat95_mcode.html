@@ -1,0 +1,16 @@
+<html>
+<body>
+<script src="resources/eml_report_loadable_data.js"></script>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="50,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">function</span> <span class="var type1" id="S2T37U3">out</span> = getQuat(<span class="var type1" id="S3T3U6">angle</span>,<span class="var type1" id="S4T6U7">axis</span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="50,2" id="srcline2"> 2</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="50,3" id="srcline3"> 3</a></span><span class="line"><span class="keyword">if</span>(<span class="mxinfo " id="T9:U4"><span class="mxinfo " id="T3:U5">abs(<span class="var type1" id="S3T3U14">angle</span>)</span> &lt; <span class="mxinfo " id="T3:U7">eps</span></span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="50,4" id="srcline4"> 4</a></span><span class="line">    <span class="mxinfo " id="T37:U8"><span class="var type1" id="S2T37U19">out</span> = <span class="mxinfo " id="T37:U10">[<span class="mxinfo " id="T3:U11">1</span> <span class="mxinfo " id="T3:U12">0</span> <span class="mxinfo " id="T3:U13">0</span> <span class="mxinfo " id="T3:U14">0</span>]</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="50,5" id="srcline5"> 5</a></span><span class="line">    <span class="keyword">return</span></span></span>
+<span class="srcline"><span class="lineno"><a href="50,6" id="srcline6"> 6</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="50,7" id="srcline7"> 7</a></span><span class="line"><span class="mxinfo " id="T6:U15"><span class="var type1" id="S4T6U29">axis</span> = <span class="mxinfo " id="T6:U17"><span class="var type1" id="S4T6U31">axis</span>/<span class="mxinfo " id="T3:U19">norm(<span class="var type1" id="S4T6U34">axis</span>)</span></span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="50,8" id="srcline8"> 8</a></span><span class="line"><span class="mxinfo " id="T37:U21"><span class="var type1" id="S2T37U37">out</span> = <span class="mxinfo " id="T37:U23">[<span class="mxinfo " id="T3:U24">cos(<span class="mxinfo " id="T3:U25"><span class="var type1" id="S3T3U43">angle</span>/<span class="mxinfo " id="T3:U27">2</span></span>)</span>,<span class="mxinfo " id="T6:U28"><span class="mxinfo " id="T3:U29">sin(<span class="mxinfo " id="T3:U30"><span class="var type1" id="S3T3U49">angle</span>/<span class="mxinfo " id="T3:U32">2</span></span>)</span> * <span class="var type1" id="S4T6U51">axis</span></span>]</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="50,9" id="srcline9"> 9</a></span><span class="line"><span class="keyword">end</span></span></span>
+</pre>
+</body>
+</html>

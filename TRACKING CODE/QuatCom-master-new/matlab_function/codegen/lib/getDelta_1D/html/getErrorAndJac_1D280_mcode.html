@@ -1,0 +1,151 @@
+<html>
+<body>
+<script src="resources/eml_report_loadable_data.js"></script>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="91,1" id="srcline1">  1</a></span><span class="line"><span class="keyword">function</span> [<span class="var type1" id="S2T1U3">errors</span>,<span class="var type1" id="S3T1U4">jacobi</span>] = getErrorAndJac_1D(<span class="var type1" id="S4T5U7">q1</span>,<span class="var type1" id="S5T5U8">q2</span>,<span class="var type1" id="S6T6U9">j</span>,<span class="var type2" id="S7T6V5U10">j_alt</span>,<span class="var type1" id="S8T3U11">delta</span>,<span class="var type2" id="S9T8V6U12">constraint</span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,2" id="srcline2">  2</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,3" id="srcline3">  3</a></span><span class="line"><span class="keyword">switch</span> <span class="var type1" id="S9T8U14">constraint</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,4" id="srcline4">  4</a></span><span class="line">    <span class="keyword">case</span> <span class="string">'proj'</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,5" id="srcline5">  5</a></span><span class="line">        [<span class="var type0" id="S2T0U20">errors</span>,<span class="var type0" id="S3T0U21">jacobi</span>] = getErrorAndJac_proj(<span class="var type0" id="S8T0U24">delta</span>,<span class="var type0" id="S4T0U25">q1</span>,<span class="var type0" id="S5T0U26">q2</span>,<span class="var type0" id="S6T0U27">j</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,6" id="srcline6">  6</a></span><span class="line">    <span class="keyword">case</span> <span class="string">'1d_corr'</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,7" id="srcline7">  7</a></span><span class="line">        [<span class="var type0" id="S2T0U33">errors</span>,<span class="var type0" id="S3T0U34">jacobi</span>] = getErrorAndJac_icorr(<span class="var type0" id="S8T0U37">delta</span>,<span class="var type0" id="S4T0U38">q1</span>,<span class="var type0" id="S5T0U39">q2</span>,<span class="var type0" id="S6T0U40">j</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,8" id="srcline8">  8</a></span><span class="line">    <span class="keyword">case</span> <span class="string">'euler_1d'</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,9" id="srcline9">  9</a></span><span class="line">        [<span class="var type1" id="S2T1U46">errors</span>,<span class="var type1" id="S3T1U47">jacobi</span>] = <span class="fcn" id="F279N11:B49">getErrorAndJac_euler1D</span>(<span class="var type1" id="S8T3U50">delta</span>,<span class="var type1" id="S4T5U51">q1</span>,<span class="var type1" id="S5T5U52">q2</span>,<span class="var type1" id="S6T6U53">j</span>,<span class="var type1" id="S7T6U54">j_alt</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,10" id="srcline10"> 10</a></span><span class="line">    <span class="keyword">case</span> <span class="string">'euler_2d'</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,11" id="srcline11"> 11</a></span><span class="line">        [<span class="var type0" id="S2T0U60">errors</span>,<span class="var type0" id="S3T0U61">jacobi</span>] = getErrorAndJac_euler2D(<span class="var type0" id="S8T0U64">delta</span>,<span class="var type0" id="S4T0U65">q1</span>,<span class="var type0" id="S5T0U66">q2</span>,<span class="var type0" id="S6T0U67">j</span>,<span class="var type0" id="S7T0U68">j_alt</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,12" id="srcline12"> 12</a></span><span class="line">    <span class="keyword">otherwise</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,13" id="srcline13"> 13</a></span><span class="line">        error(<span class="string">'Wrong constraint'</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,14" id="srcline14"> 14</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,15" id="srcline15"> 15</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,16" id="srcline16"> 16</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,17" id="srcline17"> 17</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,18" id="srcline18"> 18</a></span><span class="line"><span class="comment">%% getErrorAndJac_proj</span></span></span>
+</pre>
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="91,19" id="srcline19"> 19</a></span><span class="line">function [errors,jac] = getErrorAndJac_proj(delta,q1,q2,j)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,20" id="srcline20"> 20</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,21" id="srcline21"> 21</a></span><span class="line">errors = cost_proj(delta,q1,q2,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,22" id="srcline22"> 22</a></span><span class="line">eps = 1e-8;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,23" id="srcline23"> 23</a></span><span class="line">errors_eps = cost_proj(delta+eps,q1,q2,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,24" id="srcline24"> 24</a></span><span class="line">jac = (errors_eps-errors)/eps;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,25" id="srcline25"> 25</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,26" id="srcline26"> 26</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,27" id="srcline27"> 27</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,28" id="srcline28"> 28</a></span><span class="line"><span class="comment">%% cost_proj</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,29" id="srcline29"> 29</a></span><span class="line">function error = cost_proj(delta,q1,q2,j)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,30" id="srcline30"> 30</a></span><span class="line">q_e2_e1  = getQuat(delta,[0 0 1]);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,31" id="srcline31"> 31</a></span><span class="line">q_hat = quaternionMultiply(quaternionInvert(q1),quaternionMultiply(q_e2_e1,q2));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,32" id="srcline32"> 32</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,33" id="srcline33"> 33</a></span><span class="line">alpha = 2*atan2(q_hat(:,2:4)*j',q_hat(:,1));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,34" id="srcline34"> 34</a></span><span class="line">q_proj = getQuat(alpha,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,35" id="srcline35"> 35</a></span><span class="line">q_res = quaternionMultiply(quaternionInvert(q_proj),q_hat);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,36" id="srcline36"> 36</a></span><span class="line">error = getWeight(q1,q2,j).*2.*acos(q_res(:,1));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,37" id="srcline37"> 37</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,38" id="srcline38"> 38</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,39" id="srcline39"> 39</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,40" id="srcline40"> 40</a></span><span class="line"><span class="comment">%% getErrorAndJac_euler1D</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,41" id="srcline41"> 41</a></span><span class="line">function [errors,jac] = getErrorAndJac_euler1D(delta,q1,q2,j,j_alt)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,42" id="srcline42"> 42</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,43" id="srcline43"> 43</a></span><span class="line">errors = cost_euler1D(delta,q1,q2,j,j_alt);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,44" id="srcline44"> 44</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,45" id="srcline45"> 45</a></span><span class="line">eps = 1e-8;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,46" id="srcline46"> 46</a></span><span class="line">errors_eps = cost_euler1D(delta+eps,q1,q2,j,j_alt);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,47" id="srcline47"> 47</a></span><span class="line">jac = (errors_eps-errors)/eps;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,48" id="srcline48"> 48</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,49" id="srcline49"> 49</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,50" id="srcline50"> 50</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,51" id="srcline51"> 51</a></span><span class="line"><span class="comment">%% cost_euler1D</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,52" id="srcline52"> 52</a></span><span class="line">function error = cost_euler1D(delta,q1,q2,j,j_alt)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,53" id="srcline53"> 53</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,54" id="srcline54"> 54</a></span><span class="line">if(size(j,1) == 3  &amp;&amp; size(j,2) == 1)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,55" id="srcline55"> 55</a></span><span class="line">    j = j';</span></span>
+<span class="srcline"><span class="lineno"><a href="91,56" id="srcline56"> 56</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,57" id="srcline57"> 57</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,58" id="srcline58"> 58</a></span><span class="line">q_e2_e1  = getQuat(delta,[0 0 1]);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,59" id="srcline59"> 59</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,60" id="srcline60"> 60</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,61" id="srcline61"> 61</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,62" id="srcline62"> 62</a></span><span class="line">q_rot = getQuat(acos(dot([0, 0, 1], j)), cross([0, 0, 1],j));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,63" id="srcline63"> 63</a></span><span class="line">q_b1_e1 = quaternionMultiply(q1, q_rot);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,64" id="srcline64"> 64</a></span><span class="line">q_b2_e2 = quaternionMultiply(q2, q_rot);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,65" id="srcline65"> 65</a></span><span class="line">q_b2_b1 = quaternionMultiply(quaternionMultiply(quaternionInvert(q_b1_e1),q_e2_e1),q_b2_e2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,66" id="srcline66"> 66</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,67" id="srcline67"> 67</a></span><span class="line">angles          = getEulerAngles(q_b2_b1,'zxy',true);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,68" id="srcline68"> 68</a></span><span class="line">second_angle    = angles(:,2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,69" id="srcline69"> 69</a></span><span class="line">third_angle     = angles(:,3);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,70" id="srcline70"> 70</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,71" id="srcline71"> 71</a></span><span class="line">error = getWeight(q1,q2,j).*sqrt((second_angle).^2 + (third_angle).^2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,72" id="srcline72"> 72</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,73" id="srcline73"> 73</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,74" id="srcline74"> 74</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,75" id="srcline75"> 75</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,76" id="srcline76"> 76</a></span><span class="line"><span class="comment">%% getErrorAndJac_1dcorr</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,77" id="srcline77"> 77</a></span><span class="line">function [error,jac] = getErrorAndJac_icorr(delta,q1,q2,j)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,78" id="srcline78"> 78</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,79" id="srcline79"> 79</a></span><span class="line">v1 = quaternionRotate(q1,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,80" id="srcline80"> 80</a></span><span class="line">v2 = quaternionRotate(q2,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,81" id="srcline81"> 81</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,82" id="srcline82"> 82</a></span><span class="line">weight = getWeight(q1,q2,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,83" id="srcline83"> 83</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,84" id="srcline84"> 84</a></span><span class="line">error = (local_wrapToPi(atan2(v2(:,2), v2(:,1)) - atan2(v1(:,2), v1(:,1))) + delta).*weight;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,85" id="srcline85"> 85</a></span><span class="line">jac = weight;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,86" id="srcline86"> 86</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,87" id="srcline87"> 87</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,88" id="srcline88"> 88</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,89" id="srcline89"> 89</a></span><span class="line"><span class="comment">%% getErrorAndJac_euler2D</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,90" id="srcline90"> 90</a></span><span class="line">function [error,jac] = getErrorAndJac_euler2D(delta,q1,q2,j1,j2)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,91" id="srcline91"> 91</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,92" id="srcline92"> 92</a></span><span class="line"><span class="comment">% Calculate the error</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,93" id="srcline93"> 93</a></span><span class="line">q_e2_e1  = getQuat(delta,[0 0 1]);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,94" id="srcline94"> 94</a></span><span class="line">q_b2_s2 = getQuat(acos(dot([0, 1, 0], j2)), cross([0, 1, 0], j2));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,95" id="srcline95"> 95</a></span><span class="line">q_b1_s1 = getQuat(acos(dot([0, 0, 1], j1)), cross([0, 0, 1], j1));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,96" id="srcline96"> 96</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,97" id="srcline97"> 97</a></span><span class="line">q_e1_b1 = quaternionInvert(quaternionMultiply(q1, q_b1_s1));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,98" id="srcline98"> 98</a></span><span class="line">q_e2_b1 = quaternionMultiply(q_e1_b1,q_e2_e1);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,99" id="srcline99"> 99</a></span><span class="line">q_s2_b1 = quaternionMultiply(q_e2_b1,q2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,100" id="srcline100">100</a></span><span class="line">q_b2_b1 = quaternionMultiply(q_s2_b1,q_b2_s2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,101" id="srcline101">101</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,102" id="srcline102">102</a></span><span class="line">arcsin_arg = 2*(q_b2_b1(:,2).*q_b2_b1(:,1) + q_b2_b1(:,3) .* q_b2_b1(:,4));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,103" id="srcline103">103</a></span><span class="line">second_angle = asin(clip(arcsin_arg,-1,1));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,104" id="srcline104">104</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,105" id="srcline105">105</a></span><span class="line">error = (second_angle); </span></span>
+<span class="srcline"><span class="lineno"><a href="91,106" id="srcline106">106</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,107" id="srcline107">107</a></span><span class="line"><span class="comment">% Jacobian</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,108" id="srcline108">108</a></span><span class="line">q_b2_e2 = quaternionMultiply(q2,q_b2_s2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,109" id="srcline109">109</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,110" id="srcline110">110</a></span><span class="line">d_q3_ba = zeros(1,4);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,111" id="srcline111">111</a></span><span class="line">d_q3_ba(1) = -0.5*sin(delta/2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,112" id="srcline112">112</a></span><span class="line">d_q3_ba(4) = 0.5*cos(delta/2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,113" id="srcline113">113</a></span><span class="line">d_q_b = quaternionMultiply(quaternionMultiply(q_e1_b1,d_q3_ba),q_b2_e2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,114" id="srcline114">114</a></span><span class="line">d_q = d_q_b;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,115" id="srcline115">115</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,116" id="srcline116">116</a></span><span class="line">jac = 2*(d_q(:,2) .* q_b2_b1(:,1) + q_b2_b1(:,2).*d_q(:,1)+d_q(:,3).*q_b2_b1(:,4) + q_b2_b1(:,3) .* d_q(:,4));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,117" id="srcline117">117</a></span><span class="line">jac = (jac./sqrt(1 - arcsin_arg.^2));</span></span>
+<span class="srcline"><span class="lineno"><a href="91,118" id="srcline118">118</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,119" id="srcline119">119</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,120" id="srcline120">120</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,121" id="srcline121">121</a></span><span class="line"><span class="comment">%% clip</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,122" id="srcline122">122</a></span><span class="line">function out = clip(in,min,max)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,123" id="srcline123">123</a></span><span class="line">out = in;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,124" id="srcline124">124</a></span><span class="line">if(in&lt;min)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,125" id="srcline125">125</a></span><span class="line">    out = min;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,126" id="srcline126">126</a></span><span class="line">elseif (in&gt;max)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,127" id="srcline127">127</a></span><span class="line">    out = max;</span></span>
+<span class="srcline"><span class="lineno"><a href="91,128" id="srcline128">128</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,129" id="srcline129">129</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,130" id="srcline130">130</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,131" id="srcline131">131</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,132" id="srcline132">132</a></span><span class="line"><span class="comment">%% getWeight</span></span></span>
+<span class="srcline"><span class="lineno"><a href="91,133" id="srcline133">133</a></span><span class="line">function weight = getWeight(q1,q2,j)</span></span>
+<span class="srcline"><span class="lineno"><a href="91,134" id="srcline134">134</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="91,135" id="srcline135">135</a></span><span class="line">v1 = quaternionRotate(q1,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,136" id="srcline136">136</a></span><span class="line">v2 = quaternionRotate(q2,j);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,137" id="srcline137">137</a></span><span class="line">weight = sqrt(v1(:,1).^2 + v1(:,2).^2) .* sqrt(v2(:,1).^2 + v2(:,2).^2);</span></span>
+<span class="srcline"><span class="lineno"><a href="91,138" id="srcline138">138</a></span><span class="line">end</span></span>
+<span class="srcline"><span class="lineno"><a href="91,139" id="srcline139">139</a></span><span class="line"> </span></span>
+<span class="srcline"><span class="lineno"><a href="91,140" id="srcline140">140</a></span><span class="line"> </span></span>
+</pre>
+</div>
+</body>
+</html>
