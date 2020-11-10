@@ -1,6 +1,5 @@
 Function s=sinResp(u,y,t)
 
-
 %%% Gain
 s.ppGain=(max(y)-min(y))/(max(u)-min(u));
 % empirical sinusoid

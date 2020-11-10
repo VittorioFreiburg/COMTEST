@@ -1,0 +1,17 @@
+<html>
+<body>
+<script src="resources/eml_report_loadable_data.js"></script>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="76,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">function</span> <span class="var type1" id="S2T67U3">v</span> = quaternionRotate (<span class="var type1" id="S3T13U6">q</span>, <span class="var type1" id="S4T7U7">vec</span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="76,2" id="srcline2"> 2</a></span><span class="line">   <span class="comment">% This function will rotate the vectors v (1x3 or Nx3) by the quaternions</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,3" id="srcline3"> 3</a></span><span class="line">   <span class="comment">% q (1x4 or Nx4)</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,4" id="srcline4"> 4</a></span><span class="line">   <span class="comment">% Result: q * [0,v] * q'</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,5" id="srcline5"> 5</a></span><span class="line">   <span class="comment">% The result will always be a vector (Nx3)</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,6" id="srcline6"> 6</a></span><span class="line">   </span></span>
+<span class="srcline"><span class="lineno"><a href="76,7" id="srcline7"> 7</a></span><span class="line">   <span class="mxinfo " id="T74:U4"><span class="var type1" id="S5T74U10">qInv</span> = <span class="mxinfo " id="T74:U6"><span class="fcn" id="F257N24:B12">quaternionInvert</span>(<span class="var type1" id="S3T13U13">q</span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="76,8" id="srcline8"> 8</a></span><span class="line">   <span class="mxinfo " id="T79:U8"><span class="var type1" id="S7T79U16">qv</span> = <span class="mxinfo " id="T79:U10"><span class="fcn" id="F310N25:B18">quaternionMultiply</span>(<span class="mxinfo " id="T79:U11"><span class="fcn" id="F309N25:B20">quaternionMultiply</span>(<span class="var type1" id="S3T13U21">q</span>, <span class="mxinfo " id="T65:U13">[<span class="mxinfo " id="T2:U14">zeros(size(<span class="var type1" id="S4T7U28">vec</span>, 1), 1)</span>, <span class="var type1" id="S4T7U31">vec</span>]</span>)</span>, <span class="var type1" id="S5T74U32">qInv</span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="76,9" id="srcline9"> 9</a></span><span class="line">   <span class="mxinfo " id="T67:U18"><span class="var type1" id="S2T67U35">v</span> = <span class="mxinfo " id="T67:U20"><span class="var type1" id="S7T79U37">qv</span>(<span class="mxinfo " id="T14:U22">:</span>, <span class="mxinfo " id="T11:U23">2:4</span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="76,10" id="srcline10">10</a></span><span class="line"><span class="keyword">end</span></span></span>
+</pre>
+</body>
+</html>

@@ -1,7 +1,0 @@
-numpy
-scipy
-ujson
-c3d
-pyzmq
-msgpack-python
-PyYAML

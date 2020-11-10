@@ -1,0 +1,223 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+        <title>Realtime application</title>
+        <link href="lib/3rdparty/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="lib/3rdparty/bootstrap-slider.css" rel="stylesheet">
+        <link href="lib/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <style>
+            #videobar {
+                width: -1%;
+                height: 100%;
+                float: right;
+                overflow: auto;
+                margin-top: 0em;
+                margin: 0;
+                margin-right: 3px;
+                padding: 0;
+                border-style: solid;
+                border-width: 2px;                
+            }
+
+            #renderCanvas {
+                width: 74.5%;
+                border-style: solid;
+                border-width: 2px;
+            }
+
+
+            #sidebar {
+                width: 25%;
+                border-style: solid;
+                border-width: 0px;
+            }
+
+            #player { 
+                margin-top: 40%;
+            }
+            
+        </style>
+
+        <canvas id="renderCanvas"></canvas>
+
+        <div id="sidebar" class="container"></div>
+        <div id="videobar" class="container"></div>
+        
+        
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="lib/3rdparty/babylon.max.js"></script>
+        <script src="lib/3rdparty/jquery.js"></script>
+        <script src="lib/3rdparty/bootstrap/js/bootstrap.min.js"></script>
+        <script src="lib/3rdparty/bootstrap-slider.js"></script>
+        <script src="lib/3rdparty/smoothie.js"></script>
+        <script src="lib/3rdparty/emitter.js"></script>
+
+        <script src="lib/common.js"></script>
+        <script src="lib/datasource.js"></script>
+        <script src="lib/babylon.js"></script>
+        <script src="lib/babylon-gui.js"></script>
+        
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.js"></script>
+       
+       
+
+        <script src="lib/quaternion.js"></script>
+        <script src="lib/ui.js"></script>
+        <script src="lib/ui-extra.js"></script>
+
+
+        <script src="lib_dustin.js"></script>     
+        <script src="lib_handmodels.js"></script>              
+				
+
+				
+
+
+        <script>
+            "use strict";
+
+            class MainScene extends Scene {
+                constructor(id,jsonDataSource) {
+                    super(id);
+
+
+                    this.dataSource = jsonDataSource;
+
+                    this.createScene();
+                    window.addEventListener('resize', function() {
+                                this.engine.resize();
+                            }.bind(this));
+                }
+								
+
+								
+                createScene() {
+                    this.camera = new BABYLON.ArcRotateCamera("Camera", 1 * Math.PI , Math.PI /4, 50, new BABYLON.Vector3(0, 12, 0), this.scene);
+                    this.camera.attachControl(this.canvas, true); 
+                   
+
+                    this.light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 2), this.scene);
+                    this.scene.clearColor = new BABYLON.Color3(0.9, 0.9, 0.9);
+                    //this.ground = new TiledGround(this.scene,[1,1,1],[1,1,1]);        
+                    var disc = BABYLON.Mesh.CreateDisc("disc", 50, 300, this.scene);
+                    disc.rotate(BABYLON.Axis.X, Math.PI / 2, BABYLON.Space.WORLD);
+                    var mat = new BABYLON.StandardMaterial("mat", this.scene);
+                    mat.diffuseColor = new BABYLON.Color3(0.5, 0.5,0.5);
+                    disc.material = mat;
+                    /* CREATE AVATARS */
+                    var dist_color = [1,0.5,0.5];
+                    var finger_color = [0.5,1,0.5];
+                    this.hand = new BoxHand3(this.scene,{opacity: 1,colors_f2:[dist_color,dist_color,dist_color],colors_f3:[dist_color,dist_color,dist_color],colors_f4:[dist_color,dist_color,dist_color],colors_f5:[dist_color,dist_color,dist_color],zOffset:0});
+                    this.hand_rt = new BoxHand(this.scene,{opacity: 1,colors_f2:[dist_color,dist_color,dist_color],colors_f3:[dist_color,dist_color,dist_color],colors_f4:[dist_color,dist_color,dist_color],colors_f5:[dist_color,dist_color,dist_color],zOffset:0}); //NEW
+									
+
+										
+										
+                    this.hand.setPosition([0,15,12]);
+					this.hand_rt.setPosition([0,-5,12]); 
+					
+                    }
+
+                onSample(sample) {    
+ 										
+                    this.hand.addSample_JSON(sample,0);
+                    this.hand_rt.addSample_JSON(sample,0); //NEW
+					this.magTorso.addSample_JSON(sample,0);
+                    timeSlider.setValue_noEvent(sample.t.toFixed(1)); 
+                   
+                }
+
+                dataSource_play_handler(){
+
+                }
+               
+                dataSource_loading_handler(){
+                    startButton.text = 'Loading';
+                }
+
+                dataSource_ready_handler(){
+                    startButton.text = 'Start';
+                    timeSlider.slider.slider.slider('setAttribute','max',dataSource.sampleCount/((2000.0/7.0)/20.0));
+                    timeSlider.value = dataSource.currentIndex;
+                    console.log('Data Ready!');
+                }
+
+                dataSource_stop_handler(){
+                    startButton.text = 'Start';
+                    timeSlider.value = 0;
+                    startButton.value = 0;
+                    console.log('stop')
+                }
+
+
+                timerSlider_change_handler(){
+                    dataSource.currentTime = timeSlider.value;
+                }
+
+                jsonFile_file_handler(){
+                    dataSource.url = jsonPanel.URL;
+                }
+
+                
+                playButton_click(){
+                    if(startButton.value == 1){
+                        startButton.text = 'Pause';  
+                        this.dataSource.play();
+                    } else {
+                       this.dataSource.pause();
+                       startButton.text = 'Start';
+                   }         
+               }
+
+
+                
+        }    
+
+                 
+
+
+
+            /* Make the datasource */
+            const dataSource    = new WebSocketDataSource("ws://localhost:8080", {});  
+
+            const mainScene     = new MainScene('renderCanvas',dataSource);
+
+            /* UI Elements */
+
+
+            /* Playback Panel */
+            const jsonPanel         = new FileDropPanel('#sidebar', 'JSON Playback Controls',{collapsed: mainScene.mode});
+            const startButton       = new Button(jsonPanel,'---',{checkedClass: "btn-warning"});
+
+            const timeSliderParams = {
+                value: 0,
+                min: 0,
+                max: 100,
+                step: 0.1
+            };
+            const timeSlider        = new SliderRow(jsonPanel, timeSliderParams, {width: '200px', labelWidth: '3em', label: 'Time'}); 
+
+
+            
+            /* Main Scene */
+            
+            dataSource.addSink(mainScene);
+            /* Events */
+                //jsonPanel.on('file_dropped',this.jsonFileDropPanelChange.bind(this));
+            startButton.on('change', mainScene.playButton_click.bind(mainScene));
+            dataSource.on('play',mainScene.dataSource_play_handler.bind(mainScene))
+            dataSource.on('ready',mainScene.dataSource_ready_handler.bind(mainScene))
+            dataSource.on('loading',mainScene.dataSource_loading_handler.bind(mainScene))
+            dataSource.on('stop',mainScene.dataSource_stop_handler.bind(mainScene))
+
+            timeSlider.on('change',mainScene.timerSlider_change_handler.bind(mainScene));
+
+            jsonPanel.on('file',mainScene.jsonFile_file_handler.bind(mainScene))          
+            </script>
+
+        </body>
+        </html>
+
