@@ -1,4 +1,4 @@
-Function r=RCtiltResp(BS,FS)
+function r=RCtiltResp(BS,FS)
 % [resp] = RCtiltResp(BS,FS)
 % uses BF as step response output
 % the final value is always positive.

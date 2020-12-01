@@ -1,4 +1,4 @@
-Function r = RCtransResp(BS,X)
+function r = RCtransResp(BS,X)
 % r = RCtransResp(BS,X)
 % a variable to compare support surface translation response to the one to 
 % voluntary movements and support surface tilt
