@@ -1,8 +1,0 @@
-function [r] = PRTScsv(FILE)
-S=open(FILE);
-M=S.subject.eyes{1, 1}.subjMean.prts.angleCOM.trans15.mag;
-PH=S.subject.eyes{1, 1}.subjMean.prts.angleCOM.trans15.pha;
-
-fileID = fopen([FILE(end-3),'csv'],'w');
-fprintf(fileID,'%12.8f %12.8f\r\n',A);
-r=0;
