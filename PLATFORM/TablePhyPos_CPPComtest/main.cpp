@@ -297,18 +297,33 @@ int loadCsv(const std::string fname,std::vector<double> &stim, std::vector<doubl
 	return 0;
 }
 
+int ChoseCSV(const std::string fname, std::string& CSVname)
+{
+	std::fstream fin;
+	double tmp;
+	int count = 0;
+	fin.open(fname, std::fstream::in);
+
+	std::getline(fin, CSVname);
+
+	return 0;
+}
+
 int main(int argc, wchar_t* argv[])
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	std::vector<double> stim;
 	std::vector<double> time;
+	std::string CSV;
 	FSMI_Handle api = ForceSeatMI_Create();
 	if (! api)
 	{
 		wprintf(L"ForceSeatMI DLL was not loaded, so the game will not send anything to the ForceSeatPM\n");
 		return -1;
 	}
-	loadCsv("prtstemplate.csv", stim, time);
+
+	ChoseCSV("Signal.txt",CSV);
+	loadCsv(CSV, stim, time);
 	printf("Profile Loaded\n");
 	// Activate appropriate ForceSeatPM profile
 	ForceSeatMI_SetAppID(api, ""); // If you have dedicated app id, remove ActivateProfile calls from your code

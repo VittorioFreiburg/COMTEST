@@ -7,7 +7,7 @@ function s=RCinfo(y,t)
   s.peak=t(peakIdx);
   s.setlingMax=max(y);
   s.setlingMin=min(y(s.peak:end));
-  s.overshoot=((s.setlingMax/setValue)-1)*100
+  s.overshoot=((s.setlingMax/setValue)-1)*100;
   setlingRise=setValue*0.9;
   
  

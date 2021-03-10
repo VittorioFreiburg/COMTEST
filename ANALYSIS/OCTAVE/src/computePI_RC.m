@@ -1,7 +1,14 @@
-function r=computePI_RC(FILE,DIR)
-%takes the input file name FILE and thre result directory DIR as an input
-fileIN = fopen(FILE,'r'); %open csv file
-fileOUT = fopen([DIR,FILE(1:end-4),'_resp.csv'],'w');
+function r=computePI_RC(FILE,OUT)
+%takes the input file name FILE and the output file OUT as an input
+MatrixIN = csvread(FILE); %open csv file
+y=MatrixIN(:,1);
+t=MatrixIN(:,2);
+FOUT=fopen(OUT,'w');
+r=RCinfo(y,t);
 
+for [val,key] = r
+fprintf(FOUT,"%s,%g\n",key,val)
+end
+disp(['csv saved: ', OUT])
+fclose(FOUT);
 
-r=RCinfo(y,t)
