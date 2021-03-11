@@ -1,10 +1,11 @@
-function r=computePI_RC(FILE,OUT)
+function r=computePI_PRTS(FILE,OUT)
 %takes the input file name FILE and the output file OUT as an input
 MatrixIN = csvread(FILE); %open csv file
-y=MatrixIN(:,2);
 t=MatrixIN(:,1);
+y=MatrixIN(:,2);
+%y=MatrixIN(:,3);
 FOUT=fopen(OUT,'w');
-r=RCinfo(y,t);
+r=PRTSResp(y,t);
 
 for [val,key] = r
 fprintf(FOUT,"%s,%g\n",key,val)
