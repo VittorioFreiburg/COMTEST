@@ -1,4 +1,5 @@
 function s=RCinfo(y,t)
+  L=length(y);
   setValue=y(end);
   error=abs(y-setValue)/setValue;
   setlingIdx=find(error>0.02,1,'last');
@@ -6,7 +7,7 @@ function s=RCinfo(y,t)
   peakIdx=find(y==max(y),1,'first');
   s.peak=t(peakIdx);
   s.setlingMax=max(y);
-  s.setlingMin=min(y(s.peak:end));
+  s.setlingMin=min(y(peakIdx:L));
   s.overshoot=((s.setlingMax/setValue)-1)*100;
   setlingRise=setValue*0.9;
   

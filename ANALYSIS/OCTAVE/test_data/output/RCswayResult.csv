@@ -1,7 +1,7 @@
-setlingTime,1
-peak,1
-setlingMax,12.04
-setlingMin,0
-overshoot,0
-riseTime,1
-delayTime,1
+setlingTime,1.84
+peak,1.7
+setlingMax,2.8
+setlingMin,-0.8
+overshoot,180
+riseTime,1.66429
+delayTime,1.67429
