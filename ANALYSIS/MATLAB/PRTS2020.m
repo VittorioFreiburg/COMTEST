@@ -29,8 +29,6 @@ stim3 = stim.trans;
 
 
 
-
-
 trialanderror=0;
 figureon=0; % if 0 no figure, if 1 than group figures
 figureindiv=1; % if figureindiv==1; plot single subject figures, if 0; plot nothing
@@ -102,13 +100,6 @@ avgo3=zeros(size(tc3));	% average output time series
 fb=([0,0,-1,1]); % Calc of the theoretical stimulus
 seedx=([0 0 0 1]);
 [x,x3out]=pseudogen3(4,fb,seedx,25);
-prts=x3out*100/(max(x3out)-min(x3out));
-ln=913;
-prts=([prts(ln:end) prts(1:ln-1)])-prts(ln);
-prts1=-prts/std(abs(prts))*std(abs(stim1));
-%             prts1=prts/std(abs(prts))*std(abs(stim1));
-prts3=prts(2:2:end);
-prts3=-prts3/std(abs(prts3))*std(abs(stim3));
 %             prts3=prts3/std(abs(prts3))*std(abs(stim3));
 startidx1=200;		% start index, # cycles of PRTS for non-SR trials
 startidx3=200;		% start index, # cycles of PRTS for non-SR trials
