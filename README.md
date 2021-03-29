@@ -12,7 +12,7 @@ Code development for the COMTEST project
 
 ### Using Octave
 
-** run_pi_RC **: _defined what it computes.
+**run_pi_RC**: _defined what it computes_.
 
 Under Octave, from the folder `Analysis\Octave`, the command to launch is:
 
@@ -29,6 +29,39 @@ Under Linux, one can directly use from the terminal the following command (from 
 
 A file name `output/pi_rcsway.yaml` is created with the Performance indicator values.
 
+
+### Docker-based code access
+
+
+The following is valid for Linux machines.
+### Get official image
+
+__not yet implemetente__
+
+_An image ready to be used is available, without downloading that code:_
+
+
+```console
+docker pull eurobenchtest/pi_comtest
+```
+
+_Now you can jump on the command to launch the docker image._
+
+### Build docker image
+
+Run the following command in order to create the docker image for this testbed, from the repository code:
+
+```console
+docker build . -t pi_comtest
+```
+
+## Launch the docker image
+
+Assuming the `tests/protocol1/input` contains the input data, and that the directory `out_tests/` is **already created**, and will contain the PI output:
+
+```shell
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_RC /in/RCsway.csv /out
+```
 
 ## Acknowledgements
 
