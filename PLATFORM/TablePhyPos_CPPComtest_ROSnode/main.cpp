@@ -22,8 +22,8 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
-//#include <ros/ros.h>
-//#include <std_msgs/String.h>
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 #include "ForceSeatMI_Functions.h"
 #define M_PI 3.14159265358979323846264338327950288
 
@@ -101,12 +101,12 @@ static std::wstring stateToString(FSMI_UINT8 state)
 	return result.empty() ? L"running" : result;
 }
 
-static void work(FSMI_Handle api, std::vector<double>& stim, std::vector<double>& time)//, ros::Publisher chatter_pub)
+static void work(FSMI_Handle api, std::vector<double>& stim, std::vector<double>& time, ros::Publisher chatter_pub)
 {
-	///*ROS MESSAGE*/
-	//std_msgs::String msg;
-	//std::stringstream ss;
-	///*Trigger sent when the loop starts*/
+	/*ROS MESSAGE*/
+	std_msgs::String msg;
+	std::stringstream ss;
+	/*Trigger sent when the loop starts*/
 	printf("Giving time for the client to connect...\n");
 	Sleep(3000);
 
@@ -161,14 +161,14 @@ static void work(FSMI_Handle api, std::vector<double>& stim, std::vector<double>
 		Sleep(25);
 	}
 	start = std::chrono::system_clock::now();
-	//// <ROS trigger...
-	//std::time_t time_now_t = std::chrono::system_clock::to_time_t(start);
-	//ss << "Start: " << std::ctime(&time_now_t) << std::endl;
-	//msg.data = ss.str();
-	//ROS_INFO("%s", msg.data.c_str());
-	//chatter_pub.publish(msg);
-	//ros::spinOnce();
-	//// ...ROS trigger>
+	// <ROS trigger...
+	std::time_t time_now_t = std::chrono::system_clock::to_time_t(start);
+	ss << "Start: " << std::ctime(&time_now_t) << std::endl;
+	msg.data = ss.str();
+	ROS_INFO("%s", msg.data.c_str());
+	chatter_pub.publish(msg);
+	ros::spinOnce();
+	// ...ROS trigger>
 	while (GetKeyState('Q') == 0)
 	{
 
@@ -282,14 +282,14 @@ static void work(FSMI_Handle api, std::vector<double>& stim, std::vector<double>
 				break;
 		}
 	}
-	//// <ROS trigger...
-	//time_now_t = std::chrono::system_clock::to_time_t(end);
-	//ss << "End: " << std::ctime(&time_now_t) << std::endl;
-	//msg.data = ss.str();
-	//ROS_INFO("%s", msg.data.c_str());
-	//chatter_pub.publish(msg);
-	//ros::spinOnce();
-	//// ...ROS trigger>
+	// <ROS trigger...
+	time_now_t = std::chrono::system_clock::to_time_t(end);
+	ss << "End: " << std::ctime(&time_now_t) << std::endl;
+	msg.data = ss.str();
+	ROS_INFO("%s", msg.data.c_str());
+	chatter_pub.publish(msg);
+	ros::spinOnce();
+	// ...ROS trigger>
 	ForceSeatMI_EndMotionControl(api);
 	printf("Game ended...\n");
 }
@@ -336,10 +336,10 @@ int main(int argc,char* argv[])
 	std::vector<double> time;
 	std::string CSV;
 
-	///*A ROS node is launched for synchronization*/
-	//ros::init(argc, argv, "Platform");
-	//ros::NodeHandle n;
-	//ros::Publisher chatter_pub = n.advertise<std_msgs::String>("trigger", 1000);
+	/*A ROS node is launched for synchronization*/
+	ros::init(argc, argv, "Platform");
+	ros::NodeHandle n;
+	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("trigger", 1000);
 
 	// ros::Rate loop_rate(10); The timing implemented for the control will be used. 
 	/*                                          */
@@ -357,7 +357,7 @@ int main(int argc,char* argv[])
 	ForceSeatMI_SetAppID(api, ""); // If you have dedicated app id, remove ActivateProfile calls from your code
 	ForceSeatMI_ActivateProfile(api, "SDK - Positioning");
 
-	work(api, stim, time);// , chatter_pub);
+	work(api, stim, time, chatter_pub);
 	ForceSeatMI_Delete(api);
 	return 0;
 }

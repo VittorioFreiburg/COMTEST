@@ -1,6 +1,9 @@
 function r=computePI_RC(FILE,OUT,yaml =1)
+% R=COMPUTEPI_RC(FILE,OUT)
 %takes the input file name FILE and the output file OUT as an input
-
+%  outputs the result as YAML
+% R=COMPUTEPI_RC(FILE,OUT,0)
+% outputs the result as CSV
 MatrixIN = dlmread (FILE, ',', 1, 0); %open csv file
 y=MatrixIN(:,2);
 t=MatrixIN(:,1);

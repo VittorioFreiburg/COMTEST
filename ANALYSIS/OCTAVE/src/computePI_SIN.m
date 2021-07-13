@@ -1,5 +1,10 @@
 function r=computePI_SIN(FILE,OUT,yaml =1)
-%takes the input file name FILE and the output file OUT as an input
+% R=COMPUTEPI_SIN(FILE,OUT)
+%  takes the input file name FILE and the output file OUT as an input
+%  outputs the result as YAML
+% R=COMPUTEPI_SIN(FILE,OUT,0)
+%  outputs the result as CSV
+
 MatrixIN = csvread(FILE); %open csv file
 t=MatrixIN(:,1);
 u=MatrixIN(:,2);

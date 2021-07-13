@@ -17,7 +17,16 @@ if (yaml==1) %default
  fprintf(FOUT,"]\n");  
  disp(['yaml saved: ', OUT])
  fclose(FOUT);
-
+ 
+ FOUT=fopen(['FRF_',OUT],'w');
+ fprintf(FOUT,"type: 'vector'\n")
+ fprintf(FOUT,"label: [FRF]\n");
+ fprintf(FOUT,"value: ["); 
+ fprintf(FOUT,"%g+j%g, ",r.FRF)
+ fprintf(FOUT,"\b\b]\n");  
+ disp(['yaml saved: ', OUT])
+ fclose(FOUT);
+ 
  else % csv output  
 
 for [val,key] = r
