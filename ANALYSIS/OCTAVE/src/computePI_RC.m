@@ -7,6 +7,7 @@ function r=computePI_RC(FILE,OUT,yaml =1)
 MatrixIN = dlmread (FILE, ',', 1, 0); %open csv file
 y=MatrixIN(:,2);
 t=MatrixIN(:,1);
+
 FOUT=fopen(OUT,'w');
 r=RCinfo(y,t);
 
@@ -24,8 +25,8 @@ if (yaml==1) %default
    fprintf(FOUT,", ");
    end
  end
- fprintf(FOUT,"]\n"); 
- fprintf(FOUT,"value: ["); 
+ fprintf(FOUT,"]\n");
+ fprintf(FOUT,"value: [");
  i=0;
  for [val,key] = r
    fprintf(FOUT,"%g",val)
@@ -33,12 +34,12 @@ if (yaml==1) %default
    if(i<L)
    fprintf(FOUT,", ");
    end
- end 
- fprintf(FOUT,"]\n");  
+ end
+ fprintf(FOUT,"]\n");
  disp(['yaml saved: ', OUT])
  fclose(FOUT);
 
- else % csv output  
+ else % csv output
 
   for [val,key] = r
    fprintf(FOUT,"%s,%g\n",key,val)

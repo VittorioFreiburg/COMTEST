@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test_plan>
+<test pi_name="./run_pi_RC"
+      parameters="/in/RCsway.csv /out"
+      input_folder="input"
+      output_folder="output/pi_rcsway"/>
+
+</test_plan>
