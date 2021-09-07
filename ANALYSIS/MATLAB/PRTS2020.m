@@ -371,17 +371,17 @@ MagDwn3(find(MagDwn3<0))=0.0001;
 Pha33=phase(H33)*180/pi;% transfer function phase
 
 for zz = 1:11
-    if zz == 1
-        if Pha33(zz)>180;Pha33=Pha33-360;end;		
-        if Pha33(zz)<-180;Pha33=Pha33+360;end;	
-    else
-        if abs(Pha33(zz)- Pha33(zz-1))> abs(Pha33(zz)+360- Pha33(zz-1))
-            Pha33=Pha33+360;
-        end
-        if abs(Pha33(zz)- Pha33(zz-1))> abs(Pha33(zz)-360- Pha33(zz-1))    
-            Pha33=Pha33-360;
-        end
-    end
+%     if zz == 1
+        if Pha33(zz)>180;Pha33(zz)=Pha33(zz)-360;end;		
+        if Pha33(zz)<-180;Pha33(zz)=Pha33(zz)+360;end;	
+%     else
+%         if abs(Pha33(zz)- Pha33(zz-1))> abs(Pha33(zz)+360- Pha33(zz-1))
+%             Pha33=Pha33+360;
+%         end
+%         if abs(Pha33(zz)- Pha33(zz-1))> abs(Pha33(zz)-360- Pha33(zz-1))    
+%             Pha33=Pha33-360;
+%         end
+%     end
 end
 
     p=180/pi*asin(r./Mag33);

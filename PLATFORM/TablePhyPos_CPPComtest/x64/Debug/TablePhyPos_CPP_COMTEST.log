@@ -1,0 +1,15 @@
+﻿  ForceSeatMI_Loader.c
+  main.cpp
+D:\GitHub\COMTEST\PLATFORM\TablePhyPos_CPPComtest\main.cpp(175,13): warning C4244: '=': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+D:\GitHub\COMTEST\PLATFORM\TablePhyPos_CPPComtest\main.cpp(176,14): warning C4244: '=': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+D:\GitHub\COMTEST\PLATFORM\TablePhyPos_CPPComtest\main.cpp(127,38): warning C4101: 'fstep': unreferenced local variable
+D:\GitHub\COMTEST\PLATFORM\TablePhyPos_CPPComtest\main.cpp(323,9): warning C4101: 'tmp': unreferenced local variable
+  TablePhyPos_CPP_COMTEST.vcxproj -> D:\GitHub\COMTEST\PLATFORM\TablePhyPos_CPPComtest\x64\Debug\TablePhyPos_CPP_Comtest.exe
