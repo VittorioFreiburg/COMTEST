@@ -4,15 +4,21 @@ Code development for the COMTEST project
 
 ## Content
 
-* `Analysis`: to be defined
-* `Platform`: to be defined
-* `Tracking`: to be defined.
+* `Analysis`: Tools for the analysis of trials
+* `Platform`: Stewart Platform control system
+* `Tracking`: Xsense tracking system [doi.org/10.5220/0009869106750680]
 
 ## Computing Performance indicators
 
 ### Using Octave
 
-**run_pi_RC**: _defined what it computes_.
+**run_pi_RC**: Computes dynamic indexes describing the response to raised cosine stimulus (RC). The indexes are defined along the lines of the response to the step functiom:
+- Rise time
+- Settling time
+- Overshoot [%]
+- Peak time
+- max
+- min
 
 Under Octave, from the folder `Analysis\Octave`, the command to launch is:
 
@@ -29,6 +35,15 @@ Under Linux, one can directly use from the terminal the following command (from 
 
 A file name `output/pi_rcsway.yaml` is created with the Performance indicator values.
 
+**run_pi_PRTS**: Computes frequency response function (FRF) and indexes based on the response to pseudorandom stimulus. 
+- FRF
+- Human likeness score 
+
+**run_pi_SIN**:  indexes based on the response to sinusoidal stimulus.
+- Peak to peak gain
+- gain
+- phase lag
+- power (output/input)
 
 ### Docker-based code access
 
