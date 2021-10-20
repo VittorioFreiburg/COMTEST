@@ -16,4 +16,4 @@ printf ("result folder: %s\n", arg_list{2});
 # generating the name of the file that will contain results
 file_result = strcat(arg_list{2},"/pi_prtssway.yaml");
 
-computePI_RC(arg_list{1}, file_result)
+computePI_PRTS(arg_list{1}, file_result)
