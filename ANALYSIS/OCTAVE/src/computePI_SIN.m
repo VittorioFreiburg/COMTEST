@@ -7,8 +7,8 @@ function r=computePI_SIN(FILE,OUT,yaml =1)
 
 MatrixIN = csvread(FILE); %open csv file
 t=MatrixIN(:,1);
-u=MatrixIN(:,2);
-y=MatrixIN(:,3);
+u=MatrixIN(:,3);
+y=MatrixIN(:,2); %order inverted in order to match the PRTS data structure
 FOUT=fopen(OUT,'w');
 r=sinResp(u,y,t);
 
