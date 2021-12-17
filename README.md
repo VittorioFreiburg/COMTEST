@@ -95,6 +95,8 @@ Assuming the `tests/protocol1/input` contains the input data, and that the direc
 
 ```shell
 docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_RC /in/RCsway.csv /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_PRTS /in/PRTS_Sample_np_PF_110208_a1_1_c_z.csv /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_SIN /in/SinSample.csv  /out
 ```
 
 ## Acknowledgements
