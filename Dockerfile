@@ -20,6 +20,8 @@ RUN apt-get update \
 
 ADD ANALYSIS/OCTAVE/src /home/comtest/
 ADD ANALYSIS/OCTAVE/run_pi_RC /home/comtest/
+ADD ANALYSIS/OCTAVE/run_pi_PRTS /home/comtest/
+ADD ANALYSIS/OCTAVE/run_pi_SIN /home/comtest/
 
 # set the user as owner of the copied files.
 RUN chown -R comtest:comtest /home/comtest/

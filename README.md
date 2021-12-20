@@ -12,7 +12,8 @@ Code development for the COMTEST project
 
 ### Using Octave
 
-**run_pi_RC**: Computes dynamic indexes describing the response to raised cosine stimulus (RC). The indexes are defined along the lines of the response to the step functiom:
+**run_pi_RC**: Computes dynamic indexes describing the response to raised cosine stimulus (RC). The indexes are defined along the lines of the response to the step function:
+
 - Rise time
 - Settling time
 - Overshoot [%]
@@ -27,31 +28,49 @@ addpath("src")
 computePI_RC('test_data\input\RCsway.csv','result.yaml')
 ```
 
-Under Linux, one can directly use from the terminal the following command (from the same folder, assuming the folder `output` is already created):
+Under Linux, one can directly use from the terminal the following command (from the same folder, assuming the folder `output` is already created, and that we are located in `ANALYSIS/OCTAVE`):
 
 ```term
 ./run_pi_RC test_data\input\RCsway.csv output
 ```
 
-A file name `output/pi_rcsway.yaml` is created with the Performance indicator values.
+A file named `output/pi_rcsway.yaml` is created with the Performance indicator values.
 
-**run_pi_PRTS**: Computes frequency response function (FRF) and indexes based on the response to pseudorandom stimulus. 
+**run_pi_PRTS**: Computes frequency response function (FRF) and indexes based on the response to pseudorandom stimulus.
+
 - FRF
-- Human likeness score 
+- Human likeness score
+
+Under Linux:
+
+```term
+./run_pi_PRTS test_data/input/PRTS_Sample_np_PF_110208_a1_1_c_z.csv output
+```
+
+Files `output/pi_prts_sway.yaml` (Human likeness) and `output\pi_prts_frf.yaml`(FRF) get generated.
 
 **run_pi_SIN**:  indexes based on the response to sinusoidal stimulus.
+
 - Peak to peak gain
 - gain
 - phase lag
 - power (output/input)
 
+Under Linux:
+
+```term
+./run_pi_SIN test_data/input/SinSample.csv output
+```
+
+File `output/pi_sinsway.yaml` gets created.
+
 ### Docker-based code access
 
-
 The following is valid for Linux machines.
+
 ### Get official image
 
-__not yet implemetente__
+__not yet implemented__
 
 _An image ready to be used is available, without downloading that code:_
 
@@ -76,6 +95,8 @@ Assuming the `tests/protocol1/input` contains the input data, and that the direc
 
 ```shell
 docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_RC /in/RCsway.csv /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_PRTS /in/PRTS_Sample_np_PF_110208_a1_1_c_z.csv /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_SIN /in/SinSample.csv  /out
 ```
 
 ## Acknowledgements
