@@ -22,7 +22,7 @@ if sz(2)>sz(1)
   x=x';
 end
 t=((0:(tpts-1))/Fs)';	% time (column vector)
-w=2*pi*Fs/tpts			% fundamental frequency
+w=2*pi*Fs/tpts;			% fundamental frequency
 for n=1:fpts			% loop through frequencies
 	c=cos(n*w*t);
 	s=sin(n*w*t);

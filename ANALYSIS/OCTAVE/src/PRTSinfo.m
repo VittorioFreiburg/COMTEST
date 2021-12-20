@@ -49,8 +49,7 @@ size(d)
 size(S*invSigma*S')
 D=abs(sqrt(d*S*invSigma*S'*d')); % abs() to prevent small imaginary values 
                         
-
 s.score=D;
-s.FRF=FRF;
+s.FRF=printrealcoeff(FRF);
 
 

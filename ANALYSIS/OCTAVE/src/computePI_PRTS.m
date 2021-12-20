@@ -29,8 +29,23 @@ if (yaml==1) %default
   fprintf(FOUT,"type: 'vector'\n")
   fprintf(FOUT,"label: [FRF]\n");
   fprintf(FOUT,"value: [");
-  fprintf(FOUT,"%g+j%g, ",r.FRF)
-  fprintf(FOUT,"\b\b]\n");
+  for k=1:10
+    fprintf(FOUT,"%g",r.FRF(k,1))
+    imgc=r.FRF(k,2);
+    if imgc<0
+      fprintf(FOUT,"-%gj, ",abs(imgc))    
+    else
+      fprintf(FOUT,"+%gj, ",abs(imgc))  
+    end
+  end
+  fprintf(FOUT,"%g",r.FRF(11,1))
+  imgc=r.FRF(11,2);
+  if imgc<0
+    fprintf(FOUT,"-%gj",abs(imgc))    
+  else
+    fprintf(FOUT,"+%gj",abs(imgc))  
+  end
+  fprintf(FOUT,"]\n");
   disp(['yaml saved: ', file_result])
   fclose(FOUT);
 else % csv output
