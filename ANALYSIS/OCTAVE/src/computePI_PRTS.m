@@ -1,6 +1,6 @@
 function r=computePI_PRTS(FILE_IN, FOLDER_OUT, yaml = 1)
 %takes the input file name FILE_IN and the output folder FOLDER_OUT as an input
-MatrixIN = csvread(FILE_IN); %open csv file
+MatrixIN = dlmread (FILE, ',', 1, 0); %open csv file
 t=MatrixIN(:,1);
 y=MatrixIN(:,2);
 %y=MatrixIN(:,3);
@@ -11,7 +11,7 @@ r=PRTSinfo(y,t);
 if (yaml==1) %default
   L=length(fieldnames(r));
 
-  # generating the name of the file that will contain results
+  % generating the name of the file that will contain results
   file_result = strcat(FOLDER_OUT,"/pi_prts_sway.yaml");
 
   FOUT=fopen(file_result,'w');
@@ -49,7 +49,7 @@ if (yaml==1) %default
   disp(['yaml saved: ', file_result])
   fclose(FOUT);
 else % csv output
-  # generating the name of the file that will contain results
+  % generating the name of the file that will contain results
   file_result = strcat(FOLDER_OUT,"/pi_prts_sway.csv");
   FOUT=fopen(file_result,'w');
 

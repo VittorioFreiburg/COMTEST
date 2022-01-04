@@ -5,7 +5,7 @@ function r=computePI_SIN(FILE,OUT,yaml =1)
 % R=COMPUTEPI_SIN(FILE,OUT,0)
 %  outputs the result as CSV
 
-MatrixIN = csvread(FILE); %open csv file
+MatrixIN = dlmread (FILE, ',', 1, 0); %open csv file
 t=MatrixIN(:,1);
 u=MatrixIN(:,3);
 y=MatrixIN(:,2); %order inverted in order to match the PRTS data structure
