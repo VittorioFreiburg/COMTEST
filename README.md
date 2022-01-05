@@ -14,12 +14,12 @@ Code development for the COMTEST project
 
 **run_pi_RC**: Computes dynamic indexes describing the response to raised cosine stimulus (RC). The indexes are defined along the lines of the response to the step function:
 
-- Rise time
-- Settling time
-- Overshoot [%]
-- Peak time
-- max
-- min
+* Rise time
+* Settling time
+* Overshoot [%]
+* Peak time
+* max
+* min
 
 Under Octave, from the folder `Analysis\Octave`, the command to launch is:
 
@@ -38,8 +38,8 @@ A file named `output/pi_rcsway.yaml` is created with the Performance indicator v
 
 **run_pi_PRTS**: Computes frequency response function (FRF) and indexes based on the response to pseudorandom stimulus.
 
-- FRF
-- Human likeness score
+* FRF
+* Human likeness score
 
 Under Linux:
 
@@ -51,10 +51,10 @@ Files `output/pi_prts_sway.yaml` (Human likeness) and `output\pi_prts_frf.yaml`(
 
 **run_pi_SIN**:  indexes based on the response to sinusoidal stimulus.
 
-- Peak to peak gain
-- gain
-- phase lag
-- power (output/input)
+* Peak to peak gain
+* gain
+* phase lag
+* power (output/input)
 
 Under Linux:
 
@@ -64,22 +64,19 @@ Under Linux:
 
 File `output/pi_sinsway.yaml` gets created.
 
-### Docker-based code access
+## Docker-based code access
 
 The following is valid for Linux machines.
 
 ### Get official image
 
-__not yet implemented__
-
-_An image ready to be used is available, without downloading that code:_
-
+An image ready to be used is available, without downloading this code repository:
 
 ```console
 docker pull eurobenchtest/pi_comtest
 ```
 
-_Now you can jump on the command to launch the docker image._
+Now you can jump on the command to launch the docker image.
 
 ### Build docker image
 
@@ -89,9 +86,9 @@ Run the following command in order to create the docker image for this testbed, 
 docker build . -t pi_comtest
 ```
 
-## Launch the docker image
+### Launch the docker image
 
-Assuming the `tests/protocol1/input` contains the input data, and that the directory `out_tests/` is **already created**, and will contain the PI output:
+Assuming the folder `[repo]/ANALYSIS/OCTAVE/test_data/input` contains the input data, and that the directory `out_tests/` is **already created**, and will contain the PI output:
 
 ```shell
 docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_RC /in/com_RCsway.csv /out
