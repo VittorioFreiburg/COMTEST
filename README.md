@@ -25,13 +25,13 @@ Under Octave, from the folder `Analysis\Octave`, the command to launch is:
 
 ```octave
 addpath("src")
-computePI_RC('test_data\input\RCsway.csv','result.yaml')
+computePI_RC('test_data\input\com_RCsway.csv','result.yaml')
 ```
 
 Under Linux, one can directly use from the terminal the following command (from the same folder, assuming the folder `output` is already created, and that we are located in `ANALYSIS/OCTAVE`):
 
 ```term
-./run_pi_RC test_data\input\RCsway.csv output
+./run_pi_RC test_data\input\com_RCsway.csv output
 ```
 
 A file named `output/pi_rcsway.yaml` is created with the Performance indicator values.
@@ -44,7 +44,7 @@ A file named `output/pi_rcsway.yaml` is created with the Performance indicator v
 Under Linux:
 
 ```term
-./run_pi_PRTS test_data/input/PRTS_Sample_np_PF_110208_a1_1_c_z.csv output
+./run_pi_PRTS test_data/input/com_PRTS_Sample_np_PF_110208_a1_1_c_z.csv output
 ```
 
 Files `output/pi_prts_sway.yaml` (Human likeness) and `output\pi_prts_frf.yaml`(FRF) get generated.
@@ -59,7 +59,7 @@ Files `output/pi_prts_sway.yaml` (Human likeness) and `output\pi_prts_frf.yaml`(
 Under Linux:
 
 ```term
-./run_pi_SIN test_data/input/SinSample.csv output
+./run_pi_SIN test_data/input/com_SinSample.csv output
 ```
 
 File `output/pi_sinsway.yaml` gets created.
@@ -94,9 +94,9 @@ docker build . -t pi_comtest
 Assuming the `tests/protocol1/input` contains the input data, and that the directory `out_tests/` is **already created**, and will contain the PI output:
 
 ```shell
-docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_RC /in/RCsway.csv /out
-docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_PRTS /in/PRTS_Sample_np_PF_110208_a1_1_c_z.csv /out
-docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_SIN /in/SinSample.csv  /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_RC /in/com_RCsway.csv /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_PRTS /in/com_PRTS_Sample_np_PF_110208_a1_1_c_z.csv /out
+docker run --rm -v $PWD/ANALYSIS/OCTAVE/test_data/input:/in -v $PWD/out_tests:/out pi_comtest ./run_pi_SIN /in/com_SinSample.csv  /out
 ```
 
 ## Acknowledgements
