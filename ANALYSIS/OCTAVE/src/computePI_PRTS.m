@@ -1,6 +1,6 @@
 function r=computePI_PRTS(FILE_IN, FOLDER_OUT, yaml = 1)
 %takes the input file name FILE_IN and the output folder FOLDER_OUT as an input
-MatrixIN = dlmread (FILE, ',', 1, 0); %open csv file
+MatrixIN = dlmread (FILE_IN, ',', 1, 0); %open csv file
 t=MatrixIN(:,1);
 y=MatrixIN(:,2);
 %y=MatrixIN(:,3);

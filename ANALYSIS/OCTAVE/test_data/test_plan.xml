@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test_plan>
 <test pi_name="./run_pi_RC"
-      parameters="/in/RCsway.csv /out"
+      parameters="/in/com_RCsway.csv /out"
       input_folder="input"
       output_folder="output/rc"/>
 
 <test pi_name="./run_pi_PRTS"
-      parameters="/in/PRTS_Sample_np_PF_110208_a1_1_c_z.csv /out"
+      parameters="/in/com_PRTS_Sample_np_PF_110208_a1_1_c_z.csv /out"
       input_folder="input"
       output_folder="output/prts"/>
 
 <test pi_name="./run_pi_SIN"
-      parameters="/in/SinSample.csv /out"
+      parameters="/in/com_SinSample.csv /out"
       input_folder="input"
       output_folder="output/sin"/>
 

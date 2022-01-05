@@ -18,7 +18,7 @@ RUN apt-get update \
 
 # cp all code files into user home dir
 
-ADD ANALYSIS/OCTAVE/src /home/comtest/
+ADD ANALYSIS/OCTAVE/src /home/comtest/src
 ADD ANALYSIS/OCTAVE/run_pi_RC /home/comtest/
 ADD ANALYSIS/OCTAVE/run_pi_PRTS /home/comtest/
 ADD ANALYSIS/OCTAVE/run_pi_SIN /home/comtest/
